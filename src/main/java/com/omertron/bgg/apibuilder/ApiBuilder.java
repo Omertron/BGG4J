@@ -1,6 +1,8 @@
-package com.omertron.bgg4j.apibuilder;
+package com.omertron.bgg.apibuilder;
 
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -193,7 +195,7 @@ public class ApiBuilder {
      *
      * @return String representation of the URL.
      */
-    protected String buildUrl() {
+    protected URL buildUrl() {
         return this.buildUrl(true);
     }
 
@@ -204,7 +206,7 @@ public class ApiBuilder {
      * explicitly defined in the URI.
      * @return String representation of the URL.
      */
-    protected String buildUrl(boolean appendAllParameters) {
+    protected URL buildUrl(boolean appendAllParameters) {
         StringBuilder urlBuilder = new StringBuilder();
         StringBuilder placeHolderBuilder = new StringBuilder();
         boolean placeHolderFlag = false;
@@ -266,7 +268,14 @@ public class ApiBuilder {
                 }
             }
         }
-        return urlBuilder.toString();
+//        return urlBuilder.toString();
+
+        try {
+            return new URL(urlBuilder.toString());
+        } catch (MalformedURLException ex) {
+            return null;
+        }
+
     }
 
     /**

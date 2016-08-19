@@ -82,6 +82,12 @@
     </properties>
     
     <dependencies>
+        <!-- XML POCESSING -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>2.6.3</version>
+        </dependency>
         <!--TESTING-->
         <dependency>
             <groupId>junit</groupId>
@@ -223,7 +229,7 @@
         </pluginManagement>
  
         <plugins>
-<!--            <plugin>
+            <!--            <plugin>
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
                 <executions>

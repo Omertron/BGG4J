@@ -3,50 +3,54 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.omertron.bgg4j;
+package com.omertron.bgg;
 
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author Omertron
  */
-public class Bgg4jTest {
-    
-    public Bgg4jTest() {
+public class BggApiTest {
+
+    protected static final Logger LOG = LoggerFactory.getLogger(BggApiTest.class);
+    private final BggApi bggApi;
+
+    public BggApiTest() {
+        bggApi = new BggApi();
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
+        TestLogger.configure();
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
     /**
-     * Test of test method, of class Bgg4j.
+     * Test of xmlTest method, of class BggApi.
+     * @throws java.lang.Exception
      */
     @Test
-    public void testTest() {
-        System.out.println("test");
-        Bgg4j instance = new Bgg4j();
-        instance.test();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testXmlTest() throws Exception {
+        LOG.info("xmlTest");
+        int id = 193037;
+        bggApi.xmlTest(id);
     }
-    
 }

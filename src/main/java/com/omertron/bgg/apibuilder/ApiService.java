@@ -1,4 +1,4 @@
-package com.omertron.bgg4j.apibuilder;
+package com.omertron.bgg.apibuilder;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.omertron.bgg4j.model;
+package com.omertron.bgg.model;
 
 /**
  *
  * @author stuar
  */
-public class Thing {
-    
+public class Thing extends AbstractXmlMapping {
+
 }

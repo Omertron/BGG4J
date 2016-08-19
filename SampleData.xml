@@ -1,0 +1,244 @@
+<items termsofuse="http://boardgamegeek.com/xmlapi/termsofuse">
+    <item type="boardgame" id="193037">
+        <thumbnail>//cf.geekdo-images.com/images/pic2906832_t.jpg</thumbnail>
+        <image>//cf.geekdo-images.com/images/pic2906832.jpg</image>
+        <name type="primary" sortindex="1" value="Dead of Winter: The Long Night"/>
+        <name type="alternate" sortindex="1" value="Dead of Winter: A noite sem fim"/>
+        <name type="alternate" sortindex="1" value="Dead of Winter: La Larga Noche"/>
+        <name type="alternate" sortindex="1" value="Dead of Winter: La Lunga Notte"/>
+        <name type="alternate" sortindex="1" value="Winter der Toten: Die lange Nacht"/>
+        <description>
+            Dead of Winter: The Long Night is a standalone expansion for Dead of Winter: A Crossroads Game that introduces the Raxxon location where horrible experiments will spill out into the town unless players can contain them.&#10;&#10;The game has players at a new colony location trying to survive with new survivors against brand new challenges. Can you handle being raided by members of other colonies? Will you explore more and unravel the mysteries of the Raxxon pharmaceutical location to find powerful items but release stronger enemies? Or will you upgrade your colony to help it better withstand the undead horde? These are all choices you will get to make in this new set, and if you want, you can mix in the survivors and cards from the original set to increase the variety even more.&#10;&#10;
+        </description>
+        <yearpublished value="2016"/>
+        <minplayers value="2"/>
+        <maxplayers value="5"/>
+        <poll name="suggested_numplayers" title="User Suggested Number of Players" totalvotes="2">
+            <results numplayers="1">
+                <result value="Best" numvotes="0"/>
+                <result value="Recommended" numvotes="0"/>
+                <result value="Not Recommended" numvotes="1"/>
+            </results>
+            <results numplayers="2">
+                <result value="Best" numvotes="0"/>
+                <result value="Recommended" numvotes="0"/>
+                <result value="Not Recommended" numvotes="1"/>
+            </results>
+            <results numplayers="3">
+                <result value="Best" numvotes="0"/>
+                <result value="Recommended" numvotes="1"/>
+                <result value="Not Recommended" numvotes="0"/>
+            </results>
+            <results numplayers="4">
+                <result value="Best" numvotes="1"/>
+                <result value="Recommended" numvotes="0"/>
+                <result value="Not Recommended" numvotes="0"/>
+            </results>
+            <results numplayers="5">
+                <result value="Best" numvotes="0"/>
+                <result value="Recommended" numvotes="2"/>
+                <result value="Not Recommended" numvotes="0"/>
+            </results>
+            <results numplayers="5+">
+                <result value="Best" numvotes="0"/>
+                <result value="Recommended" numvotes="0"/>
+                <result value="Not Recommended" numvotes="1"/>
+            </results>
+        </poll>
+        <playingtime value="120"/>
+        <minplaytime value="60"/>
+        <maxplaytime value="120"/>
+        <minage value="14"/>
+        <poll name="suggested_playerage" title="User Suggested Player Age" totalvotes="3">
+            <results>
+                <result value="2" numvotes="0"/>
+                <result value="3" numvotes="0"/>
+                <result value="4" numvotes="0"/>
+                <result value="5" numvotes="0"/>
+                <result value="6" numvotes="0"/>
+                <result value="8" numvotes="0"/>
+                <result value="10" numvotes="1"/>
+                <result value="12" numvotes="0"/>
+                <result value="14" numvotes="1"/>
+                <result value="16" numvotes="0"/>
+                <result value="18" numvotes="1"/>
+                <result value="21 and up" numvotes="0"/>
+            </results>
+        </poll>
+        <poll name="language_dependence" title="Language Dependence" totalvotes="2">
+            <results>
+                <result level="1" value="No necessary in-game text" numvotes="0"/>
+                <result level="2" value="Some necessary text - easily memorized or small crib sheet" numvotes="0"/>
+                <result level="3" value="Moderate in-game text - needs crib sheet or paste ups" numvotes="0"/>
+                <result level="4" value="Extensive use of text - massive conversion needed to be playable" numvotes="2"/>
+                <result level="5" value="Unplayable in another language" numvotes="0"/>
+            </results>
+        </poll>
+        <link type="boardgamecategory" id="1023" value="Bluffing"/>
+        <link type="boardgamecategory" id="1039" value="Deduction"/>
+        <link type="boardgamecategory" id="1042" value="Expansion for Base-game"/>
+        <link type="boardgamecategory" id="1024" value="Horror"/>
+        <link type="boardgamecategory" id="1118" value="Mature / Adult"/>
+        <link type="boardgamecategory" id="1016" value="Science Fiction"/>
+        <link type="boardgamecategory" id="2481" value="Zombies"/>
+        <link type="boardgamemechanic" id="2001" value="Action Point Allowance System"/>
+        <link type="boardgamemechanic" id="2023" value="Co-operative Play"/>
+        <link type="boardgamemechanic" id="2072" value="Dice Rolling"/>
+        <link type="boardgamemechanic" id="2015" value="Variable Player Powers"/>
+        <link type="boardgamemechanic" id="2017" value="Voting"/>
+        <link type="boardgamefamily" id="26915" value="Crossroads Series"/>
+        <link type="boardgameexpansion" id="195656" value="Dead of Winter: Rich Sommer"/>
+        <link type="boardgameexpansion" id="203824" value="Dead of Winter: Rodney Smith"/>
+        <link type="boardgameintegration" id="150376" value="Dead of Winter: A Crossroads Game"/>
+        <link type="boardgamedesigner" id="12679" value="Jonathan Gilmour"/>
+        <link type="boardgamedesigner" id="65023" value="Isaac Vega"/>
+        <link type="boardgameartist" id="77485" value="David Richards"/>
+        <link type="boardgameartist" id="70730" value="Fernanda Suarez"/>
+        <link type="boardgameartist" id="39902" value="Peter Wocken"/>
+        <link type="boardgamepublisher" id="2973" value="Edge Entertainment"/>
+        <link type="boardgamepublisher" id="15605" value="Galápagos Jogos"/>
+        <link type="boardgamepublisher" id="264" value="Heidelberger Spieleverlag"/>
+        <link type="boardgamepublisher" id="10754" value="Plaid Hat Games"/>
+        <link type="boardgamepublisher" id="3242" value="Raven Distribution"/>
+        <videos total="10">
+            <video id="107906" title="Toronto Gaymers' Board Game Review: Dead of Winter: The Long Night" category="review" language="English" link="http://www.youtube.com/watch?v=s02yTugWcxM" username="Justen" userid="223597" postdate="2016-08-15T16:32:44-05:00"/>
+            <video id="107449" title="Overview of Dead of Winter: The Long Night from co-designer Isaac Vega" category="interview" language="English" link="http://www.youtube.com/watch?v=X8154N6Gh9o" username="W Eric Martin" userid="15734" postdate="2016-08-11T13:35:34-05:00"/>
+            <video id="105837" title="[DriveThruReview] #521: “The Vale of Shadows”" category="review" language="English" link="http://www.youtube.com/watch?v=WiLkfnJDL5I" username="eekamouse" userid="75811" postdate="2016-07-27T10:34:28-05:00"/>
+            <video id="104548" title="The Quarantine Zone #5 - Dead of Winter: The Long Night" category="session" language="English" link="http://www.youtube.com/watch?v=KxvwBG5E_IM" username="robstjohn" userid="662834" postdate="2016-07-15T22:55:08-05:00"/>
+            <video id="104534" title="Dead of Winter: The Long Night Live Playthrough" category="session" language="English" link="http://www.youtube.com/watch?v=u8bk7GZMfdc" username="robstjohn" userid="662834" postdate="2016-07-15T20:48:58-05:00"/>
+            <video id="104234" title="Board Game Brawl Reviews - Dead of Winter: The Long Night" category="review" language="English" link="http://www.youtube.com/watch?v=M7lK5h4K9z0" username="TheKillShirt" userid="606095" postdate="2016-07-13T09:12:46-05:00"/>
+            <video id="101110" title="Dead Of Winter: The Long Night - How To Play, By Watch It Played" category="instructional" language="English" link="http://www.youtube.com/watch?v=63FT-LXLun4" username="Pelvidar" userid="247565" postdate="2016-06-13T17:54:14-05:00"/>
+            <video id="100469" title="Miami Dice 197 - Dead of Winter: The Long Night" category="review" language="English" link="http://www.youtube.com/watch?v=RTwViWemx9g" username="TomVasel" userid="722" postdate="2016-06-06T20:36:34-05:00"/>
+            <video id="96371" title="Dead of Winter: The Long Night Trailer " category="other" language="English" link="http://www.youtube.com/watch?v=gNNzmLfyQhA" username="BTBAM" userid="446054" postdate="2016-04-20T09:18:51-05:00"/>
+            <video id="91896" title="Epic Gaming Night Intervew With Isaac Vega " category="interview" language="English" link="http://www.youtube.com/watch?v=PDXtuz6jB2Y" username="Roycannaday" userid="450282" postdate="2016-02-23T18:07:45-06:00"/>
+        </videos>
+        <versions>
+            <item type="boardgameversion" id="320674">
+                <link type="boardgameversion" id="193037" value="Dead of Winter: The Long Night" inbound="true"/>
+                <name type="primary" sortindex="1" value="Brazilian First Edition"/>
+                <link type="boardgamepublisher" id="15605" value="Galápagos Jogos"/>
+                <link type="boardgameartist" id="77485" value="David Richards"/>
+                <link type="boardgameartist" id="70730" value="Fernanda Suarez"/>
+                <link type="boardgameartist" id="39902" value="Peter Wocken"/>
+                <yearpublished value="2016"/>
+                <productcode value=""/>
+                <width value="11.7"/>
+                <length value="11.7"/>
+                <depth value="2.8"/>
+                <weight value="0"/>
+                <link type="language" id="2200" value="Portuguese"/>
+            </item>
+            <item type="boardgameversion" id="299634">
+                <thumbnail>//cf.geekdo-images.com/images/pic2906832_t.jpg</thumbnail>
+                <image>//cf.geekdo-images.com/images/pic2906832.jpg</image>
+                <link type="boardgameversion" id="193037" value="Dead of Winter: The Long Night" inbound="true"/>
+                <name type="primary" sortindex="1" value="English first edition"/>
+                <link type="boardgamepublisher" id="10754" value="Plaid Hat Games"/>
+                <yearpublished value="2016"/>
+                <productcode value="PHG10001"/>
+                <width value="11.6142"/>
+                <length value="11.6142"/>
+                <depth value="2.75591"/>
+                <weight value="3.828"/>
+                <link type="language" id="2184" value="English"/>
+            </item>
+            <item type="boardgameversion" id="307292">
+                <thumbnail>//cf.geekdo-images.com/images/pic3060901_t.jpg</thumbnail>
+                <image>//cf.geekdo-images.com/images/pic3060901.jpg</image>
+                <link type="boardgameversion" id="193037" value="Dead of Winter: The Long Night" inbound="true"/>
+                <name type="primary" sortindex="1" value="German first edition"/>
+                <link type="boardgamepublisher" id="264" value="Heidelberger Spieleverlag"/>
+                <yearpublished value="2016"/>
+                <productcode value="HEPH100"/>
+                <width value="11.811"/>
+                <length value="11.811"/>
+                <depth value="2.75591"/>
+                <weight value="4.62971"/>
+                <link type="language" id="2188" value="German"/>
+            </item>
+            <item type="boardgameversion" id="319822">
+                <link type="boardgameversion" id="193037" value="Dead of Winter: The Long Night" inbound="true"/>
+                <name type="primary" sortindex="1" value="Italian first edition"/>
+                <link type="boardgamepublisher" id="3242" value="Raven Distribution"/>
+                <yearpublished value="2016"/>
+                <productcode value=""/>
+                <width value="0"/>
+                <length value="0"/>
+                <depth value="0"/>
+                <weight value="0"/>
+                <link type="language" id="2193" value="Italian"/>
+            </item>
+            <item type="boardgameversion" id="315015">
+                <thumbnail>//cf.geekdo-images.com/images/pic3059097_t.png</thumbnail>
+                <image>//cf.geekdo-images.com/images/pic3059097.png</image>
+                <link type="boardgameversion" id="193037" value="Dead of Winter: The Long Night" inbound="true"/>
+                <name type="primary" sortindex="1" value="Spanish first edition"/>
+                <link type="boardgamepublisher" id="2973" value="Edge Entertainment"/>
+                <yearpublished value="2016"/>
+                <productcode value=""/>
+                <width value="11.6142"/>
+                <length value="11.6142"/>
+                <depth value="2.83465"/>
+                <weight value="3.85809"/>
+                <link type="language" id="2203" value="Spanish"/>
+            </item>
+        </versions>
+        <comments page="1" totalitems="76">
+            <comment username="8janek8" rating="N/A" value="pl"/>
+            <comment username="AnotherLars" rating="N/A" value="Skal klart undersøges."/>
+            <comment username="anthonii" rating="10" value="Customisiming my DoW game! Heck yeah!"/>
+            <comment username="Augeezer" rating="N/A" value="CH - Sept"/>
+            <comment username="beltmatt_usa" rating="8.75" value="play tested"/>
+            <comment username="Bertsa" rating="N/A" value="2016"/>
+            <comment username="beuh_dave" rating="N/A" value="July 13, 2016 $62.95"/>
+            <comment username="boiledsteak" rating="9" value="Before this expansion, the original set felt somewhat lacking to me. Unless you have a group willing to roleplay the game out with you (which is sadly rare in my case), everything came down to two choices for me - do the thing that benefits the colony or hold out for you own personal objectives But BOY the added modules do A LOT to make the game more exciting, while also not adding too much additional rules to keep track of! Raxxon adds an awesome element of risk vs reward - terrible TERRIBLE things can happen but at the same time there's some amazing game-saving items to be had if everything goes well. The special zombies make ALL of the zombies feel more like a threat rather than just a nuisance in the background because you have to kill those before any other zombies and they often have a much higher chance of killing your survivor in various different means, and the choice all the players have to make to contain them or use their dice to complete objectives is amazing. The bandits also add a wonderful increase in randomness and choices. If they get out of hand, they'll tear through location decks and take the things you want, and add even more zombies around you. However you can also use them to find the items that you want FOR you, because if your really successful with a search or attack at a bandit hideout, you can choose from any of the items in their pile! But at the same time doing those actions at that hideout can be more risky as it seems to be a more wound-prone alternative. Then finally the improvements module works really well for giving you opportunities to adjust to whatever hardships the game is throwing at you. For example, if you have a lot of helpless to feed, it's a real good idea to invest points into the greenhouse! Got some crazed item using players on your team? Invest in an outhouse! A lot more of the crossroad cards also seemed to go off, and one even interacted with another in a great way, showing the rivalry between two characters that I really appreciated. However I could have just gotten lucky because I could easily see combining the DoWs diluting the deck. Perhaps when I combine the DoW games I'll use a house rule where people will draw 2 or 3 cards if the previous was an 'If this character is in play' type. Any who, All of this does SO much to revitalize the game. The base game was rated about a 5 for me, but this one is definitely an 8 or 9 now. I also personally just jumped into the game using all the modules at once - it's not much to tack on if you already know the game, and they even have a section for just new rules that's easy to consume. ---Edit--- After a couple more games, my game group agrees. I've never had as many laughs or tense moments playing only the base set. I dont see myself going back!"/>
+            <comment username="boseguy22" rating="N/A" value="2-5 Players, 1-3 Hours Ron Jodway"/>
+            <comment username="Cardoc24" rating="N/A" value="Q3 2016"/>
+            <comment username="corrigan" rating="N/A" value="In collection since 2016"/>
+            <comment username="crwills" rating="N/A" value="preorder"/>
+            <comment username="derblob" rating="N/A" value="Teleportation? Not sure I'm ready for teleportation. "/>
+            <comment username="DisasterAiR" rating="N/A" value="2700฿"/>
+            <comment username="Doel" rating="N/A" value="ST"/>
+            <comment username="dot1258" rating="N/A" value="Can't wait for this."/>
+            <comment username="elliotthj91" rating="8.5" value="Rating purely based on the new modules. They are fun, challenging and add difficulty but I can take them or leave them. Component upgrades, new survivors and item decks are great. "/>
+            <comment username="Elyklord" rating="N/A" value="[AUG '16] Preordered from Plaid Hat Games"/>
+            <comment username="faith4ev3r" rating="N/A" value="FR. 2-5 (best with 4)."/>
+            <comment username="Ferrant" rating="N/A" value="3"/>
+            <comment username="Foss83" rating="N/A" value="preordered GateKeeper Games AU$95 -ETA late AUG 2016"/>
+            <comment username="frogggirl2" rating="8.4" value="Dead of Winter + Complexity/Difficulty. If you like the original, you'll find more of the same here and like it. If not, don't bother. If you're wondering which one to buy - if you want more complexity/difficulty buy this one and if you want more story telling w/o the complexity buy the original."/>
+            <comment username="FunckyDude" rating="N/A" value="I own but haven't had a chance to play this game yet."/>
+            <comment username="GalaGalaxia" rating="10" value="Ah, yes! Despair, frost walkers, more cards, more locations, more ... everything! More Dead of Winter, please! See main entry — Dead of Winter: A Crossroads Game"/>
+            <comment username="GeberGeeter" rating="N/A" value="Cannot wait for this one. This is the game that got me into board gaming for real. I never knew board games could be like DoW!"/>
+        </comments>
+        <marketplacelistings>
+            <listing>
+                <listdate value="Fri, 01 Jul 2016 20:40:50 +0000"/>
+                <price currency="USD" value="90.00"/>
+                <condition value="new"/>
+                <notes value="Brand New and in Shrink. Comes with the exclusive Rich Sommer character, cardboard standee, and crossroads card."/>
+                <link href="http://boardgamegeek.com/geekmarket/product/967887" title="marketlisting"/>
+            </listing>
+            <listing>
+                <listdate value="Thu, 11 Aug 2016 17:35:29 +0000"/>
+                <price currency="GBP" value="90.00"/>
+                <condition value="new"/>
+                <notes value="In shrink, with Rich Sommer promo."/>
+                <link href="http://boardgamegeek.com/geekmarket/product/990987" title="marketlisting"/>
+            </listing>
+            <listing>
+                <listdate value="Sat, 13 Aug 2016 16:08:52 +0000"/>
+                <price currency="EUR" value="74.00"/>
+                <condition value="new"/>
+                <notes value="Still in shrink with Rich Sommer promo pack (character card, cardboard standee and crossroads card). Paypal +2€ or bank transfer."/>
+                <link href="http://boardgamegeek.com/geekmarket/product/991681" title="marketlisting"/>
+            </listing>
+            <listing>
+                <listdate value="Wed, 17 Aug 2016 13:05:07 +0000"/>
+                <price currency="USD" value="38.49"/>
+                <condition value="new"/>
+                <notes value="PLAID HAT GAMES (PLD10001) Dead of Winter: The Long Night is the new stand-alone expansion for Dead of Winter: A Crossroads game. Obtain more of everything that made Dead of Winter an epic struggle for power and survival! Experience a new colony full of new survivors and new gameplay elements, each of which is introduced to players through its own game scenario. Fight off bandits from another colony, build improvements to your colony, and most intriguingly, unravel the mysteries of the new Raxxon Pharmaceutical location. It is full of powerful items, but also full of Raxxon's twisted human experiments that show up in the game as disturbing new enemies. Dead of Winter: The Long Night can be bought alone and is a fully-realized Dead of Winter experience by itself. You can also combine everything - characters, items, objectives, crossroad cards, etc. - between The Long Night and the original Dead of Winter."/>
+                <link href="http://boardgamegeek.com/geekmarket/product/993611" title="marketlisting"/>
+            </listing>
+        </marketplacelistings>
+    </item>
+</items>

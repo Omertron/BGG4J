@@ -1,4 +1,6 @@
-package com.omertron.bgg4j.enums;
+package com.omertron.bgg.enums;
+
+import org.apache.commons.lang3.StringUtils;
 
 /**
  *
@@ -8,47 +10,71 @@ public enum Command {
     /**
      * In the BGG database, any physical, tangible product is called a thing
      */
-    thing,
+    THING,
     /**
      * In the BGG database, more abstract or esoteric concepts are represented by something called a family.
      */
-    family,
+    FAMILY,
     /**
      * Request a list of forums for a particular type/id
      */
-    forumlist,
+    FORUMLIST,
     /**
      * Request a list of threads in a particular forum
      */
-    forum,
+    FORUM,
     /**
      * Request forum threads by thread id.
      *
      * A thread consists of some basic information about the thread and a series of articles or individual postings.
      */
-    thread,
+    THREAD,
     /**
      * Request basic public profile information about a user by username
      */
-    user,
+    USER,
     /**
      * Request information about particular guilds.
      */
-    guild,
+    GUILD,
     /**
      * Request plays logged by a particular user or for a particular item.
      */
-    plays,
+    PLAYS,
     /**
      * Request details about a user's collection.
      */
-    collection,
+    COLLECTION,
     /**
      * You can retrieve the list of most active items on the site.
      */
-    hot,
+    HOT,
     /**
      * You can search for items from the database by name.
      */
-    search;
+    SEARCH;
+
+    /**
+     * Convert a string into an Enum type
+     *
+     * @param source
+     * @return
+     * @throws IllegalArgumentException If type is not recognised
+     *
+     */
+    public static Command fromString(String source) {
+        if (StringUtils.isNotBlank(source)) {
+            try {
+                return Command.valueOf(source.trim().toUpperCase());
+            } catch (IllegalArgumentException ex) {
+                throw new IllegalArgumentException("Command " + source + " does not exist.", ex);
+            }
+        }
+        throw new IllegalArgumentException("Command must not be null");
+    }
+    
+    @Override
+    public String toString() {
+        return this.name().toLowerCase();
+    }
 }

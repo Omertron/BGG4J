@@ -1,4 +1,4 @@
-package com.omertron.bgg4j.apibuilder;
+package com.omertron.bgg.apibuilder;
 
 /**
  * Represents an exception which occured executing a remote API method.

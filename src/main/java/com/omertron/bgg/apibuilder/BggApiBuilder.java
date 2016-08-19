@@ -1,13 +1,18 @@
-package com.omertron.bgg4j.apibuilder;
+package com.omertron.bgg.apibuilder;
 
-import com.omertron.bgg4j.enums.Command;
-import com.omertron.bgg4j.enums.ThingType;
+import com.omertron.bgg.enums.Command;
+import com.omertron.bgg.enums.ThingType;
+import java.net.URL;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author Omertron
  */
 public class BggApiBuilder extends ApiBuilder {
+
+    private static final Logger LOG = LoggerFactory.getLogger(BggApiBuilder.class);
 
     public BggApiBuilder(String urlFormat) {
         super(urlFormat);
@@ -21,28 +26,28 @@ public class BggApiBuilder extends ApiBuilder {
      */
     public BggApiBuilder command(Command command) {
         switch (command) {
-            case thing:
+            case THING:
                 // Supported
                 break;
-            case family:
+            case FAMILY:
                 throw new ApiException("Not supported");
-            case forumlist:
+            case FORUMLIST:
                 throw new ApiException("Not supported");
-            case forum:
+            case FORUM:
                 throw new ApiException("Not supported");
-            case thread:
+            case THREAD:
                 throw new ApiException("Not supported");
-            case user:
+            case USER:
                 throw new ApiException("Not supported");
-            case guild:
+            case GUILD:
                 throw new ApiException("Not supported");
-            case plays:
+            case PLAYS:
                 break;
-            case collection:
+            case COLLECTION:
                 throw new ApiException("Not supported");
-            case hot:
+            case HOT:
                 throw new ApiException("Not supported");
-            case search:
+            case SEARCH:
                 throw new ApiException("Not supported");
             default:
                 throw new ApiException("Not supported");
@@ -52,8 +57,8 @@ public class BggApiBuilder extends ApiBuilder {
     }
 
     /**
-     * Specifies the id of the thing(s) to retrieve. To request multiple things with a single query, NNN can specify a
-     * comma-delimited list of ids.
+     * Specifies the id of the thing(s) to retrieve. To request multiple things
+     * with a single query, NNN can specify a comma-delimited list of ids.
      *
      * @param id
      * @return
@@ -64,8 +69,9 @@ public class BggApiBuilder extends ApiBuilder {
     }
 
     /**
-     * Specifies that, regardless of the type of thing asked for by id, the results are filtered by the THINGTYPE(s) specified.
-     * Multiple THINGTYPEs can be specified in a comma-delimited list.
+     * Specifies that, regardless of the type of thing asked for by id, the
+     * results are filtered by the THINGTYPE(s) specified. Multiple THINGTYPEs
+     * can be specified in a comma-delimited list.
      *
      * @param value
      * @return
@@ -82,7 +88,7 @@ public class BggApiBuilder extends ApiBuilder {
      * @return
      */
     public BggApiBuilder versions(int value) {
-        super.parameter("versions", value);
+        super.parameter("versions", onOff(value));
         return this;
     }
 
@@ -93,7 +99,7 @@ public class BggApiBuilder extends ApiBuilder {
      * @return
      */
     public BggApiBuilder videos(int value) {
-        super.parameter("videos ", value);
+        super.parameter("videos", onOff(value));
         return this;
     }
 
@@ -104,7 +110,7 @@ public class BggApiBuilder extends ApiBuilder {
      * @return
      */
     public BggApiBuilder stats(int value) {
-        super.parameter("stats", value);
+        super.parameter("stats", onOff(value));
         return this;
     }
 
@@ -115,7 +121,7 @@ public class BggApiBuilder extends ApiBuilder {
      * @return
      */
     public BggApiBuilder historical(int value) {
-        super.parameter("historical", value);
+        super.parameter("historical", onOff(value));
         return this;
     }
 
@@ -131,7 +137,8 @@ public class BggApiBuilder extends ApiBuilder {
     }
 
     /**
-     * Returns all comments about the item. Also includes ratings when commented. See page parameter.
+     * Returns all comments about the item. Also includes ratings when
+     * commented. See page parameter.
      *
      * @param value
      * @return
@@ -148,11 +155,13 @@ public class BggApiBuilder extends ApiBuilder {
      *
      * See page parameter.
      *
-     * The ratingcomments and comments parameters cannot be used together, as the output always appears in the comments node of the
-     * XML; comments parameter takes precedence if both are specified.
+     * The ratingcomments and comments parameters cannot be used together, as
+     * the output always appears in the comments node of the XML; comments
+     * parameter takes precedence if both are specified.
      *
-     * Ratings are sorted in descending rating value, based on the highest rating they have assigned to that item (each item in the
-     * collection can have a different rating).
+     * Ratings are sorted in descending rating value, based on the highest
+     * rating they have assigned to that item (each item in the collection can
+     * have a different rating).
      *
      * @param value
      * @return
@@ -163,7 +172,8 @@ public class BggApiBuilder extends ApiBuilder {
     }
 
     /**
-     * Defaults to 1, controls the page of data to see for historical info, comments, and ratings data.
+     * Defaults to 1, controls the page of data to see for historical info,
+     * comments, and ratings data.
      *
      * @param value
      * @return
@@ -198,12 +208,12 @@ public class BggApiBuilder extends ApiBuilder {
     }
 
     @Override
-    public String buildUrl() {
+    public URL buildUrl() {
         return super.buildUrl();
     }
 
     @Override
-    public String buildUrl(boolean appendAllParameters) {
+    public URL buildUrl(boolean appendAllParameters) {
         return super.buildUrl(appendAllParameters);
     }
 
