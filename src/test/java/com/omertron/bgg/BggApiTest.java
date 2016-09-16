@@ -1,10 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.omertron.bgg;
 
+import com.omertron.bgg.enums.FamilyType;
+import com.omertron.bgg.enums.IncludeExclude;
+import com.omertron.bgg.model.BoardGameExtended;
+import com.omertron.bgg.model.Family;
+import com.omertron.bgg.model.UserInfo;
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -44,13 +48,67 @@ public class BggApiTest {
     }
 
     /**
-     * Test of xmlTest method, of class BggApi.
-     * @throws java.lang.Exception
+     * Test of getBoardGameInfo method, of class BggApi.
+     *
+     * @throws com.omertron.bgg.BggException
+     */
+//    @Test
+    public void testGetBoardGameInfo() throws BggException {
+        LOG.info("getBoardGameInfo");
+        int id = 193037; //193037 DOW:TLN
+
+        List<BoardGameExtended> result = bggApi.getBoardGameInfo(id);
+
+        for (BoardGameExtended bg : result) {
+            LOG.info("{}", ToStringBuilder.reflectionToString(bg, ToStringStyle.MULTI_LINE_STYLE));
+        }
+    }
+
+    /**
+     * Test of getFamilyItems method, of class BggApi.
+     *
+     * @throws com.omertron.bgg.BggException
+     */
+//    @Test
+    public void testGetFamilyItems() throws BggException {
+        LOG.info("getFamilyItems");
+        int id = 17; // Ticket To Ride
+        List<Family> result = bggApi.getFamilyItems(id, FamilyType.BOARDGAMEFAMILY);
+
+        for (Family f : result) {
+            LOG.info("{}", f);
+            LOG.info("Links: {}", f.getLinks().size());
+        }
+    }
+
+    /**
+     * Test of getUserInfo method, of class BggApi.
+     *
+     * @throws com.omertron.bgg.BggException
+     */
+//    @Test
+    public void testGetUserInfo() throws BggException {
+        LOG.info("getUserInfo");
+        String name = "chaddyboy_2000";
+        UserInfo result = bggApi.getUserInfo(name);
+        LOG.info("{}", ToStringBuilder.reflectionToString(result, ToStringStyle.MULTI_LINE_STYLE));
+    }
+
+    /**
+     * Test of getCollectionInfo method, of class BggApi.
+     *
+     * @throws com.omertron.bgg.BggException
      */
     @Test
-    public void testXmlTest() throws Exception {
-        LOG.info("xmlTest");
-        int id = 193037;
-        bggApi.xmlTest(id);
+    public void testGetCollectionInfo() throws BggException {
+        LOG.info("getCollectionInfo");
+//        String username = "chaddyboy_2000";
+        String username = "omertron";
+        List<IncludeExclude> include = new ArrayList<>();
+        List<IncludeExclude> exclude = new ArrayList<>();
+
+        include.add(IncludeExclude.OWN);
+        bggApi.getCollectionInfo(username, include, exclude);
     }
+
 }

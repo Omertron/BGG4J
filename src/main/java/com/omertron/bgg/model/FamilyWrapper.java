@@ -12,17 +12,17 @@ import java.util.List;
  */
 @JacksonXmlRootElement(localName = "items")
 @JsonIgnoreProperties("termsofuse")
-public class BoardGameList extends AbstractXmlMapping {
+public class FamilyWrapper extends AbstractXmlMapping {
 
     @JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "item")
-    private List<BoardGameExtended> items;
+    private List<Family> items;
 
-    public List<BoardGameExtended> getItems() {
+    public List<Family> getItems() {
         return items;
     }
 
-    public void setItems(List<BoardGameExtended> items) {
+    public void setItems(List<Family> items) {
         this.items = items;
     }
 

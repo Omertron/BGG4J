@@ -11,9 +11,9 @@ import com.omertron.bgg.enums.PrimaryAlternative;
 public class ThingName extends AbstractXmlMapping {
 
     private PrimaryAlternative type;
-    @JacksonXmlProperty(localName = "sortindex",isAttribute = true)
+    @JacksonXmlProperty(localName = "sortindex", isAttribute = true)
     private int sortIndex;
-    @JacksonXmlProperty(localName = "value",isAttribute = true)
+    @JacksonXmlProperty(localName = "value", isAttribute = true)
     private String value;
 
     public PrimaryAlternative getType() {

@@ -15,9 +15,6 @@ import java.util.Map;
  */
 public class BoardGame extends Thing {
 
-    /*
-        <link type="language" id="2200" value="Portuguese"/>
-     */
     @JacksonXmlProperty(localName = "id", isAttribute = true)
     private int id;
     @JacksonXmlProperty(localName = "type", isAttribute = true)
@@ -179,6 +176,10 @@ public class BoardGame extends Thing {
     @JsonSetter("productcode")
     public void setProductCode(ValueHolder<String> productCode) {
         this.productCode = productCode.getValue();
+    }
+
+    public IdValue getLanguage() {
+        return language;
     }
 
 }

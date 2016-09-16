@@ -6,11 +6,10 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
  *
  * @author stuar
  */
-public class IdValue extends AbstractXmlMapping{
+public class IdValue extends AbstractXmlMapping {
 
     @JacksonXmlProperty(localName = "id", isAttribute = true)
     private int id;
-    @JacksonXmlProperty(localName = "value", isAttribute = true)
     private String value;
 
     public IdValue() {
@@ -33,8 +32,14 @@ public class IdValue extends AbstractXmlMapping{
         return value;
     }
 
+    @JacksonXmlProperty(localName = "value", isAttribute = true)
     public void setValue(String value) {
         this.value = value;
+    }
+
+    @JacksonXmlProperty(localName = "name", isAttribute = true)
+    public void setName(String name) {
+        this.value = name;
     }
 
 }

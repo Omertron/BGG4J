@@ -3,14 +3,24 @@ package com.omertron.bgg;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.omertron.bgg.apibuilder.BggApiBuilder;
 import com.omertron.bgg.enums.Command;
+import com.omertron.bgg.enums.FamilyType;
+import com.omertron.bgg.enums.IncludeExclude;
 import com.omertron.bgg.enums.ThingType;
-import com.omertron.bgg.model.BoardGameList;
+import com.omertron.bgg.model.BoardGameExtended;
+import com.omertron.bgg.model.BoardGameWrapper;
+import com.omertron.bgg.model.CollectionItemWrapper;
+import com.omertron.bgg.model.Family;
+import com.omertron.bgg.model.FamilyWrapper;
+import com.omertron.bgg.model.UserInfo;
 import com.omertron.bgg.tools.HttpTools;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.http.client.HttpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.yamj.api.common.exception.ApiExceptionType;
 import org.yamj.api.common.http.SimpleHttpClientBuilder;
 
 /**
@@ -29,37 +39,112 @@ public class BggApi {
     private static final String BASE_URL = "http://www.boardgamegeek.com/xmlapi2/{command}";
 
     public BggApi() {
-        httpTools = new HttpTools(new SimpleHttpClientBuilder().build());
+        this(new SimpleHttpClientBuilder().build());
+    }
+
+    public BggApi(HttpClient httpClient) {
+        httpTools = new HttpTools(httpClient);
         mapper = new XmlMapper();
     }
 
-//193037 DOW:TLN
-    public void xmlTest(int id) throws BggException, IOException {
+    public List<BoardGameExtended> getBoardGameInfo(int id) throws BggException {
         URL url = new BggApiBuilder(BASE_URL)
                 .command(Command.THING)
                 .id(id)
                 .thingType(ThingType.BOARDGAME)
-                .versions(1)
-                .videos(1)
-                .stats(1)
-                .historical(1)
-                .marketplace(1)
-                .comments(1)
-                .ratingComments(1)
+                .include(IncludeExclude.VERSIONS,
+                        IncludeExclude.VIDEOS,
+                        IncludeExclude.STATS,
+                        IncludeExclude.HISTORICAL,
+                        IncludeExclude.MARKETPLACE,
+                        IncludeExclude.COMMENTS,
+                        IncludeExclude.RATINGCOMMENTS)
                 .page(1)
                 .pageSize(25)
                 .buildUrl();
 
+        BoardGameWrapper bgl;
+        try {
+            LOG.info("URL: {}", url);
+            String webpage = httpTools.getRequest(url);
+            bgl = mapper.readValue(webpage, BoardGameWrapper.class);
+        } catch (IOException ex) {
+            throw new BggException(ApiExceptionType.MAPPING_FAILED, "Failed to map to BoardGameList", url, ex);
+        }
+
+        if (bgl.getItems() != null) {
+            return bgl.getItems();
+        } else {
+            return new ArrayList<>();
+        }
+    }
+
+    public List<Family> getFamilyItems(int id, FamilyType familyType) throws BggException {
+        URL url = new BggApiBuilder(BASE_URL)
+                .command(Command.FAMILY)
+                .family(familyType)
+                .id(id)
+                .buildUrl();
+
         LOG.info("URL: {}", url);
 
-        File src = new File("SampleData.xml");
-        LOG.info("Filename: " + src.getAbsolutePath());
-//        String webpage = httpTools.getRequest(url);
-//        BoardGameList bgl = mapper.readValue(webpage, BoardGameList.class);
-        BoardGameList bgl = mapper.readValue(src, BoardGameList.class);
+        try {
+            String webpage = httpTools.getRequest(url);
+            FamilyWrapper familyWrapper = mapper.readValue(webpage, FamilyWrapper.class);
+            return familyWrapper.getItems();
+        } catch (IOException ex) {
+            throw new BggException(ApiExceptionType.MAPPING_FAILED, "Failed to map to Family", url, ex);
+        }
+    }
+
+    public UserInfo getUserInfo(String name) throws BggException {
+        URL url = new BggApiBuilder(BASE_URL)
+                .command(Command.USER)
+                .name(name)
+                .include(IncludeExclude.BUDDIES,
+                        IncludeExclude.GUILDS,
+                        IncludeExclude.HOT,
+                        IncludeExclude.TOP)
+                .buildUrl();
+
+        LOG.info("URL: {}", url);
+
+        try {
+            String webpage = httpTools.getRequest(url);
+            return mapper.readValue(webpage, UserInfo.class);
+        } catch (IOException ex) {
+            throw new BggException(ApiExceptionType.MAPPING_FAILED, "Failed to map UserInfo", url, ex);
+        }
+    }
+
+    /**
+     * Get information on a users collection
+     *
+     * @param username
+     * @param include
+     * @param exclude
+     * @throws BggException
+     */
+    public void getCollectionInfo(String username, List<IncludeExclude> include, List<IncludeExclude> exclude) throws BggException {
+        URL url = new BggApiBuilder(BASE_URL)
+                .command(Command.COLLECTION)
+                .username(username)
+                // Add the includes 
+                .include(include)
+                // Add the excludes
+                .exclude(exclude)
+                .buildUrl();
         
-//        for (BoardGame bg : bgl.getItems()) {
-//            LOG.info("{}", ToStringBuilder.reflectionToString(bg, ToStringStyle.MULTI_LINE_STYLE));
-//        }
+        LOG.info("URL: {}", url);
+
+        String webpage = httpTools.getRequest(url);
+        try {
+            CollectionItemWrapper result = mapper.readValue(webpage, CollectionItemWrapper.class);
+
+            LOG.info("Returned {} items", result.getItems().size());
+        } catch (IOException ex) {
+            throw new BggException(ApiExceptionType.MAPPING_FAILED, "Failed to map CollectionInfo", url, ex);
+        }
+
     }
 }

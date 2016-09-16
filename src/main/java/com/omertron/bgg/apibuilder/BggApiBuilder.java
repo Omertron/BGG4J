@@ -1,8 +1,12 @@
 package com.omertron.bgg.apibuilder;
 
 import com.omertron.bgg.enums.Command;
+import com.omertron.bgg.enums.Domain;
+import com.omertron.bgg.enums.FamilyType;
+import com.omertron.bgg.enums.IncludeExclude;
 import com.omertron.bgg.enums.ThingType;
 import java.net.URL;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,7 +34,8 @@ public class BggApiBuilder extends ApiBuilder {
                 // Supported
                 break;
             case FAMILY:
-                throw new ApiException("Not supported");
+                // Supported
+                break;
             case FORUMLIST:
                 throw new ApiException("Not supported");
             case FORUM:
@@ -38,13 +43,16 @@ public class BggApiBuilder extends ApiBuilder {
             case THREAD:
                 throw new ApiException("Not supported");
             case USER:
-                throw new ApiException("Not supported");
+                // Supported
+                break;
             case GUILD:
                 throw new ApiException("Not supported");
             case PLAYS:
+                // Supported
                 break;
             case COLLECTION:
-                throw new ApiException("Not supported");
+                // Supported
+                break;
             case HOT:
                 throw new ApiException("Not supported");
             case SEARCH:
@@ -78,96 +86,6 @@ public class BggApiBuilder extends ApiBuilder {
      */
     public BggApiBuilder thingType(ThingType value) {
         super.parameter("type", value.toString());
-        return this;
-    }
-
-    /**
-     * Returns version info for the item.
-     *
-     * @param value
-     * @return
-     */
-    public BggApiBuilder versions(int value) {
-        super.parameter("versions", onOff(value));
-        return this;
-    }
-
-    /**
-     * Returns videos for the item.
-     *
-     * @param value
-     * @return
-     */
-    public BggApiBuilder videos(int value) {
-        super.parameter("videos", onOff(value));
-        return this;
-    }
-
-    /**
-     * Returns ranking and rating stats for the item.
-     *
-     * @param value
-     * @return
-     */
-    public BggApiBuilder stats(int value) {
-        super.parameter("stats", onOff(value));
-        return this;
-    }
-
-    /**
-     * Returns historical data over time. See page parameter.
-     *
-     * @param value
-     * @return
-     */
-    public BggApiBuilder historical(int value) {
-        super.parameter("historical", onOff(value));
-        return this;
-    }
-
-    /**
-     * Returns marketplace data.
-     *
-     * @param value
-     * @return
-     */
-    public BggApiBuilder marketplace(int value) {
-        super.parameter("marketplace", value);
-        return this;
-    }
-
-    /**
-     * Returns all comments about the item. Also includes ratings when
-     * commented. See page parameter.
-     *
-     * @param value
-     * @return
-     */
-    public BggApiBuilder comments(int value) {
-        super.parameter("comments", value);
-        return this;
-    }
-
-    /**
-     * Returns all ratings for the item.
-     *
-     * Also includes comments when rated.
-     *
-     * See page parameter.
-     *
-     * The ratingcomments and comments parameters cannot be used together, as
-     * the output always appears in the comments node of the XML; comments
-     * parameter takes precedence if both are specified.
-     *
-     * Ratings are sorted in descending rating value, based on the highest
-     * rating they have assigned to that item (each item in the collection can
-     * have a different rating).
-     *
-     * @param value
-     * @return
-     */
-    public BggApiBuilder ratingComments(int value) {
-        super.parameter("ratingcomments", value);
         return this;
     }
 
@@ -207,6 +125,106 @@ public class BggApiBuilder extends ApiBuilder {
         return this;
     }
 
+    /**
+     * Set the family type
+     *
+     * @param familyType
+     * @return
+     */
+    public BggApiBuilder family(FamilyType familyType) {
+        super.parameter("type", familyType.toString());
+        return this;
+    }
+
+    /**
+     * Specifies the user name.
+     *
+     * Only one user is requestable at a time.
+     *
+     * @param name
+     * @return
+     */
+    public BggApiBuilder name(String name) {
+        super.parameter("name", name);
+        return this;
+    }
+
+    /**
+     * Controls the domain for the users hot 10 and top 10 lists.
+     *
+     * The DOMAIN default is boardgame
+     *
+     * Valid values are: boardgame, rpg & videogame
+     *
+     * @param domain
+     * @return
+     */
+    public BggApiBuilder domain(Domain domain) {
+        super.parameter("domain", domain.toString());
+        return this;
+    }
+
+    /**
+     * Name of the user to request the collection for.
+     *
+     * @param username
+     * @return
+     */
+    public BggApiBuilder username(String username) {
+        super.parameter("username", username);
+        return this;
+    }
+
+    public BggApiBuilder include(IncludeExclude value) {
+        if (value != null) {
+            super.parameter(value.toString(), 1);
+        }
+        return this;
+    }
+
+    public BggApiBuilder include(IncludeExclude... values) {
+        if (values != null) {
+            for (IncludeExclude ie : values) {
+                super.parameter(ie.toString(), 1);
+            }
+        }
+        return this;
+    }
+
+    public BggApiBuilder include(List<IncludeExclude> values) {
+        if (values != null) {
+            for (IncludeExclude ie : values) {
+                super.parameter(ie.toString(), 1);
+            }
+        }
+        return this;
+    }
+
+    public BggApiBuilder exclude(IncludeExclude value) {
+        if (value != null) {
+            super.parameter(value.toString(), 0);
+        }
+        return this;
+    }
+
+    public BggApiBuilder exclude(IncludeExclude... values) {
+        if (values != null) {
+            for (IncludeExclude ie : values) {
+                super.parameter(ie.toString(), 0);
+            }
+        }
+        return this;
+    }
+
+    public BggApiBuilder exclude(List<IncludeExclude> values) {
+        if (values != null) {
+            for (IncludeExclude ie : values) {
+                super.parameter(ie.toString(), 0);
+            }
+        }
+        return this;
+    }
+
     @Override
     public URL buildUrl() {
         return super.buildUrl();
@@ -217,17 +235,4 @@ public class BggApiBuilder extends ApiBuilder {
         return super.buildUrl(appendAllParameters);
     }
 
-    /**
-     * Accept a value and return 1 or 0, nothing else;
-     *
-     * @param value
-     * @return
-     */
-    private int onOff(int value) {
-        if (value == 0) {
-            return 0;
-        } else {
-            return 1;
-        }
-    }
 }
