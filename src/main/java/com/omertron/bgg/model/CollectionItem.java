@@ -1,9 +1,10 @@
 package com.omertron.bgg.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
-@JsonIgnoreProperties("sortindex")
+@JacksonXmlRootElement(localName = "item")
 public class CollectionItem extends AbstractXmlMapping {
 
     @JacksonXmlProperty(localName = "objecttype", isAttribute = true)
@@ -14,10 +15,13 @@ public class CollectionItem extends AbstractXmlMapping {
     private int objectId;
     @JacksonXmlProperty(localName = "collid", isAttribute = true)
     private int collectionId;
-    @JacksonXmlProperty(localName = "name")
+    @JacksonXmlElementWrapper(useWrapping = true)
+    @JacksonXmlProperty(localName = "name", isAttribute = false)
     private ThingName name;
+    @JacksonXmlProperty(localName = "originalname")
+    private String originalName;
     @JacksonXmlProperty(localName = "yearpublished")
-    private String year;
+    private String yearPublished;
     @JacksonXmlProperty(localName = "image")
     private String image;
     @JacksonXmlProperty(localName = "thumbnail")
@@ -69,12 +73,12 @@ public class CollectionItem extends AbstractXmlMapping {
         this.name = name;
     }
 
-    public String getYear() {
-        return year;
+    public String getYearPublished() {
+        return yearPublished;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setYearPublished(String yearPublished) {
+        this.yearPublished = yearPublished;
     }
 
     public String getImage() {
@@ -115,6 +119,14 @@ public class CollectionItem extends AbstractXmlMapping {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getOriginalName() {
+        return originalName;
+    }
+
+    public void setOriginalName(String originalName) {
+        this.originalName = originalName;
     }
 
 }

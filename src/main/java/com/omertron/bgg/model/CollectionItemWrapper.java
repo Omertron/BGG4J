@@ -1,15 +1,16 @@
 package com.omertron.bgg.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import java.util.List;
 
 @JacksonXmlRootElement(localName = "items")
-@JsonIgnoreProperties("termsofuse")
+@JsonIgnoreProperties({"termsofuse", "script"})
 public class CollectionItemWrapper extends AbstractXmlMapping {
 
-//    @JacksonXmlElementWrapper(useWrapping = false)
+    @JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "item")
     private List<CollectionItem> items;
     @JacksonXmlProperty(localName = "totalitems", isAttribute = true)
