@@ -126,9 +126,10 @@ public class BggApi {
      * @param username
      * @param include
      * @param exclude
+     * @return
      * @throws BggException
      */
-    public void getCollectionInfo(String username, List<IncludeExclude> include, List<IncludeExclude> exclude) throws BggException {
+    public CollectionItemWrapper getCollectionInfo(String username, List<IncludeExclude> include, List<IncludeExclude> exclude) throws BggException {
         URL url = new BggApiBuilder(BASE_URL)
                 .command(Command.COLLECTION)
                 .username(username)
@@ -145,6 +146,7 @@ public class BggApi {
             CollectionItemWrapper result = mapper.readValue(webpage, CollectionItemWrapper.class);
 
             LOG.info("Returned {} items", result.getItems().size());
+            return result;
         } catch (IOException ex) {
             throw new BggException(ApiExceptionType.MAPPING_FAILED, "Failed to map CollectionInfo", url, ex);
         }

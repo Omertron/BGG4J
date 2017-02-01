@@ -3,6 +3,7 @@ package com.omertron.bgg;
 import com.omertron.bgg.enums.FamilyType;
 import com.omertron.bgg.enums.IncludeExclude;
 import com.omertron.bgg.model.BoardGameExtended;
+import com.omertron.bgg.model.CollectionItemWrapper;
 import com.omertron.bgg.model.Family;
 import com.omertron.bgg.model.UserInfo;
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -108,7 +111,11 @@ public class BggApiTest {
         List<IncludeExclude> exclude = new ArrayList<>();
 
         include.add(IncludeExclude.OWN);
-        bggApi.getCollectionInfo(username, include, exclude);
+        CollectionItemWrapper result = bggApi.getCollectionInfo(username, include, exclude);
+
+        assertTrue("No collection found", result.getTotalItems() > 0);
+        assertNotNull("Empty collection", result.getItems());
+        assertTrue("No collection items found", result.getItems().size() > 0);
     }
 
 }
