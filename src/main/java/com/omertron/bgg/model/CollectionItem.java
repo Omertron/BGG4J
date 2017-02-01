@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @JsonIgnoreProperties("sortindex")
-public class CollectionItem {
+public class CollectionItem extends AbstractXmlMapping {
 
     @JacksonXmlProperty(localName = "objecttype", isAttribute = true)
     private String objectType;
