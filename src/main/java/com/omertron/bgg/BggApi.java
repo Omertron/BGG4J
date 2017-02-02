@@ -143,10 +143,7 @@ public class BggApi {
 
         String webpage = retrieveWebpage(url);
         try {
-            CollectionItemWrapper result = mapper.readValue(webpage, CollectionItemWrapper.class);
-
-            LOG.info("Returned {} items", result.getItems().size());
-            return result;
+            return mapper.readValue(webpage, CollectionItemWrapper.class);
         } catch (IOException ex) {
             throw new BggException(ApiExceptionType.MAPPING_FAILED, "Failed to map CollectionInfo", url, ex);
         }
