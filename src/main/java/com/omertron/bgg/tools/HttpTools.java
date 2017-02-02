@@ -33,8 +33,33 @@ public class HttpTools {
     private static final int RETRY_MAX = 5;
     private static final int STATUS_TOO_MANY_REQUESTS = 429;
 
+    private static final String TRY_AGAIN = "Please try again later for access";
+
     public HttpTools(HttpClient httpClient) {
         this.httpClient = httpClient;
+    }
+
+    /**
+     * Get the web data from BGG, allowing for the retry time
+     *
+     * @param url
+     * @return
+     * @throws com.omertron.bgg.BggException
+     */
+    public String retrieveWebpage(URL url) throws BggException {
+        String webpage = getRequest(url);
+        long retryCount = 0L;
+
+        while (webpage.contains(TRY_AGAIN) && retryCount++ <= RETRY_MAX) {
+            delay(retryCount);
+            webpage = getRequest(url);
+        }
+
+        if (!webpage.contains(TRY_AGAIN)) {
+            return webpage;
+        }
+
+        throw new BggException(ApiExceptionType.CONNECTION_ERROR, "Exceeded retry count");
     }
 
     /**

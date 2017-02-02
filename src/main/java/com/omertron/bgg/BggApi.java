@@ -32,9 +32,6 @@ public class BggApi {
     private static final Logger LOG = LoggerFactory.getLogger(BggApi.class);
     private static HttpTools httpTools;
     private static XmlMapper mapper;
-    private static final String TRY_AGAIN = "Please try again later for access";
-    private static final int MAX_RETRY = 5;
-    private static final int DELAY = 1000;
 
     /**
      * API URL base.
@@ -69,7 +66,7 @@ public class BggApi {
         BoardGameWrapper bgl;
         try {
             LOG.info("URL: {}", url);
-            String webpage = retrieveWebpage(url);
+            String webpage = httpTools.retrieveWebpage(url);
             bgl = mapper.readValue(webpage, BoardGameWrapper.class);
         } catch (IOException ex) {
             throw new BggException(ApiExceptionType.MAPPING_FAILED, "Failed to map to BoardGameList", url, ex);
@@ -92,7 +89,7 @@ public class BggApi {
         LOG.info("URL: {}", url);
 
         try {
-            String webpage = retrieveWebpage(url);
+            String webpage = httpTools.retrieveWebpage(url);
             FamilyWrapper familyWrapper = mapper.readValue(webpage, FamilyWrapper.class);
             return familyWrapper.getItems();
         } catch (IOException ex) {
@@ -113,7 +110,7 @@ public class BggApi {
         LOG.info("URL: {}", url);
 
         try {
-            String webpage = retrieveWebpage(url);
+            String webpage = httpTools.retrieveWebpage(url);
             return mapper.readValue(webpage, UserInfo.class);
         } catch (IOException ex) {
             throw new BggException(ApiExceptionType.MAPPING_FAILED, "Failed to map UserInfo", url, ex);
@@ -141,7 +138,7 @@ public class BggApi {
 
         LOG.info("URL: {}", url);
 
-        String webpage = retrieveWebpage(url);
+        String webpage = httpTools.retrieveWebpage(url);
         try {
             return mapper.readValue(webpage, CollectionItemWrapper.class);
         } catch (IOException ex) {
@@ -150,38 +147,4 @@ public class BggApi {
 
     }
 
-    /**
-     * Get the web data from BGG, allowing for the retry time
-     *
-     * @param response
-     * @return
-     */
-    private String retrieveWebpage(URL url) throws BggException {
-        String webpage = httpTools.getRequest(url);
-        int retryCount = 1;
-
-        while (webpage.contains(TRY_AGAIN) && retryCount <= MAX_RETRY) {
-            delay(retryCount++ * DELAY);
-            webpage = httpTools.getRequest(url);
-        }
-
-        if (!webpage.contains(TRY_AGAIN)) {
-            return webpage;
-        }
-
-        throw new BggException(ApiExceptionType.CONNECTION_ERROR, "Exceeded retry count");
-    }
-
-    /**
-     * Create a delay
-     *
-     * @param delay
-     */
-    private void delay(long delay) {
-        try {
-            Thread.sleep(delay);
-        } catch (InterruptedException ex) {
-            LOG.trace("Sleep interrupted", ex);
-        }
-    }
 }
