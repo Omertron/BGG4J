@@ -147,4 +147,25 @@ public class BggApi {
 
     }
 
+    // Search
+    public void searchBoardGame(String query, boolean exact, boolean includeExpansions) throws BggException {
+        BggApiBuilder builder = new BggApiBuilder(BASE_URL)
+                .command(Command.SEARCH)
+                .query(query)
+                .thingType(ThingType.BOARDGAME);
+
+        if (includeExpansions) {
+            builder = builder.thingType(ThingType.BOARDGAME, ThingType.BOARDGAMEEXPANSION);
+        } else {
+            builder = builder.thingType(ThingType.BOARDGAME);
+        }
+
+        if (exact) {
+            builder = builder.include(IncludeExclude.EXACT);
+        }
+
+        URL url = builder.buildUrl();
+
+        LOG.info("URL: {}", url);
+    }
 }

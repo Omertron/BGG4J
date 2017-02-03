@@ -102,7 +102,7 @@ public class BggApiTest {
      *
      * @throws com.omertron.bgg.BggException
      */
-    @Test
+//    @Test
     public void testGetCollectionInfo() throws BggException {
         LOG.info("getCollectionInfo");
 //        String username = "chaddyboy_2000";
@@ -118,4 +118,15 @@ public class BggApiTest {
         assertTrue("No collection items found", result.getItems().size() > 0);
     }
 
+    /**
+     * Test of searchBoardGame method, of class BggApi.
+     *
+     * @throws com.omertron.bgg.BggException
+     */
+    @Test
+    public void testSearchBoardGame() throws BggException {
+        LOG.info("searchBoardGame");
+        String query = "Sushi Go";
+        bggApi.searchBoardGame(query, true, true);
+    }
 }

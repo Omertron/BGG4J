@@ -11,6 +11,7 @@ public enum IncludeExclude {
     BUDDIES,
     COMMENT,
     COMMENTS,
+    EXACT,
     GUILDS,
     HASPARTS,
     HISTORICAL,
