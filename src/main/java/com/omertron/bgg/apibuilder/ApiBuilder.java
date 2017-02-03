@@ -115,7 +115,6 @@ public class ApiBuilder {
      */
     protected ApiBuilder field(String name) {
         this.fieldsMap.put(name, "");
-
         return this;
     }
 

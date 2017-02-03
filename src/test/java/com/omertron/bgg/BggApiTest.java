@@ -55,7 +55,7 @@ public class BggApiTest {
      *
      * @throws com.omertron.bgg.BggException
      */
-//    @Test
+    @Test
     public void testGetBoardGameInfo() throws BggException {
         LOG.info("getBoardGameInfo");
         int id = 193037; //193037 DOW:TLN
@@ -72,7 +72,7 @@ public class BggApiTest {
      *
      * @throws com.omertron.bgg.BggException
      */
-//    @Test
+    @Test
     public void testGetFamilyItems() throws BggException {
         LOG.info("getFamilyItems");
         int id = 17; // Ticket To Ride
@@ -89,7 +89,7 @@ public class BggApiTest {
      *
      * @throws com.omertron.bgg.BggException
      */
-//    @Test
+    @Test
     public void testGetUserInfo() throws BggException {
         LOG.info("getUserInfo");
         String name = "chaddyboy_2000";
@@ -102,7 +102,7 @@ public class BggApiTest {
      *
      * @throws com.omertron.bgg.BggException
      */
-//    @Test
+    @Test
     public void testGetCollectionInfo() throws BggException {
         LOG.info("getCollectionInfo");
 //        String username = "chaddyboy_2000";
@@ -127,6 +127,6 @@ public class BggApiTest {
     public void testSearchBoardGame() throws BggException {
         LOG.info("searchBoardGame");
         String query = "Sushi Go";
-        bggApi.searchBoardGame(query, true, true);
+        bggApi.searchBoardGame(query, false, true);
     }
 }

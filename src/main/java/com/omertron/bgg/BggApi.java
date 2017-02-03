@@ -147,7 +147,14 @@ public class BggApi {
 
     }
 
-    // Search
+    /**
+     * Search NGG for the game name
+     *
+     * @param query
+     * @param exact
+     * @param includeExpansions
+     * @throws BggException
+     */
     public void searchBoardGame(String query, boolean exact, boolean includeExpansions) throws BggException {
         BggApiBuilder builder = new BggApiBuilder(BASE_URL)
                 .command(Command.SEARCH)
@@ -167,5 +174,8 @@ public class BggApi {
         URL url = builder.buildUrl();
 
         LOG.info("URL: {}", url);
+
+        String webpage = httpTools.retrieveWebpage(url);
+
     }
 }
