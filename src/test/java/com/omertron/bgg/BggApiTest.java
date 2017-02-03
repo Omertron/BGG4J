@@ -5,6 +5,7 @@ import com.omertron.bgg.enums.IncludeExclude;
 import com.omertron.bgg.model.BoardGameExtended;
 import com.omertron.bgg.model.CollectionItemWrapper;
 import com.omertron.bgg.model.Family;
+import com.omertron.bgg.model.SearchWrapper;
 import com.omertron.bgg.model.UserInfo;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
@@ -94,6 +96,9 @@ public class BggApiTest {
         LOG.info("getUserInfo");
         String name = "chaddyboy_2000";
         UserInfo result = bggApi.getUserInfo(name);
+
+        assertTrue("Wrong ID", result.getId() == 4994);
+
         LOG.info("{}", ToStringBuilder.reflectionToString(result, ToStringStyle.MULTI_LINE_STYLE));
     }
 
@@ -127,6 +132,10 @@ public class BggApiTest {
     public void testSearchBoardGame() throws BggException {
         LOG.info("searchBoardGame");
         String query = "Sushi Go";
-        bggApi.searchBoardGame(query, false, true);
+        SearchWrapper result = bggApi.searchBoardGame(query, false, true);
+
+        assertTrue("Not enough search results", result.getTotal() >= 4);
+        assertNotNull("No results!", result.getItems());
+        assertFalse("No result items", result.getItems().isEmpty());
     }
 }

@@ -11,6 +11,7 @@ import com.omertron.bgg.model.BoardGameWrapper;
 import com.omertron.bgg.model.CollectionItemWrapper;
 import com.omertron.bgg.model.Family;
 import com.omertron.bgg.model.FamilyWrapper;
+import com.omertron.bgg.model.SearchWrapper;
 import com.omertron.bgg.model.UserInfo;
 import com.omertron.bgg.tools.HttpTools;
 import java.io.IOException;
@@ -153,9 +154,10 @@ public class BggApi {
      * @param query
      * @param exact
      * @param includeExpansions
+     * @return 
      * @throws BggException
      */
-    public void searchBoardGame(String query, boolean exact, boolean includeExpansions) throws BggException {
+    public SearchWrapper searchBoardGame(String query, boolean exact, boolean includeExpansions) throws BggException {
         BggApiBuilder builder = new BggApiBuilder(BASE_URL)
                 .command(Command.SEARCH)
                 .query(query)
@@ -176,6 +178,11 @@ public class BggApi {
         LOG.info("URL: {}", url);
 
         String webpage = httpTools.retrieveWebpage(url);
+        try {
+            return mapper.readValue(webpage, SearchWrapper.class);
+        } catch (IOException ex) {
+            throw new BggException(ApiExceptionType.MAPPING_FAILED, "Failed to map CollectionInfo", url, ex);
+        }
 
     }
 }

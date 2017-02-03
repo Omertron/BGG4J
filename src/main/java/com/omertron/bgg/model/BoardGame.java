@@ -3,7 +3,6 @@ package com.omertron.bgg.model;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.omertron.bgg.enums.LinkType;
-import com.omertron.bgg.enums.PrimaryAlternative;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,40 +14,18 @@ import java.util.Map;
  */
 public class BoardGame extends Thing {
 
-    @JacksonXmlProperty(localName = "id", isAttribute = true)
-    private int id;
-    @JacksonXmlProperty(localName = "type", isAttribute = true)
-    private String type;
     @JacksonXmlProperty(localName = "image")
     private String image;
     @JacksonXmlProperty(localName = "thumbnail")
     private String thumbnail;
     private IdValue boardGameVersion;
-    private final List<ThingName> names = new ArrayList<>();
     private final Map<LinkType, List<IdValue>> boardGameLinks = new HashMap<>();
-    private Integer yearPublished;
     private Float width;
     private Float length;
     private Float depth;
     private Float weight;
     private String productCode;
     private IdValue language;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
     public String getImage() {
         return image;
@@ -94,43 +71,6 @@ public class BoardGame extends Thing {
 
     public IdValue getBoardGameVersion() {
         return boardGameVersion;
-    }
-
-    public List<ThingName> getNames() {
-        return names;
-    }
-
-    public String getPrimaryName() {
-        for (ThingName name : names) {
-            if (name.getType() == PrimaryAlternative.PRIMARY) {
-                return name.getValue();
-            }
-        }
-        return null;
-    }
-
-    public List<String> getAlternativeNames() {
-        List<String> results = new ArrayList<>();
-        for (ThingName name : names) {
-            if (name.getType() == PrimaryAlternative.ALTERNATE) {
-                results.add(name.getValue());
-            }
-        }
-        return results;
-    }
-
-    @JsonSetter("name")
-    public void setName(ThingName name) {
-        this.names.add(name);
-    }
-
-    public Integer getYearPublished() {
-        return yearPublished;
-    }
-
-    @JsonSetter("yearpublished")
-    public void setYearPublished(ValueHolder<Integer> yearPublished) {
-        this.yearPublished = yearPublished.getValue();
     }
 
     public Float getWidth() {
