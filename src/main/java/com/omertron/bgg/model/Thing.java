@@ -15,6 +15,11 @@ public class Thing extends AbstractXmlMapping {
     private final List<ThingName> names = new ArrayList<>();
     private Integer yearPublished;
 
+    /**
+     * Get the game ID
+     *
+     * @return
+     */
     public int getId() {
         return id;
     }
@@ -23,10 +28,39 @@ public class Thing extends AbstractXmlMapping {
         this.id = id;
     }
 
+    /**
+     * Get all the names associated with the Thing
+     *
+     * @return
+     */
     public List<ThingName> getNames() {
         return names;
     }
 
+    /**
+     * Return the name for the Thing.
+     *
+     * @return the primary name if available, then default to the first alternative name found. If no names are available, null is
+     * returned
+     */
+    public String getName() {
+        String name = getPrimaryName();
+
+        if (name == null) {
+            List<String> altNames = getAlternativeNames();
+            if (altNames != null && !altNames.isEmpty()) {
+                name = altNames.get(0);
+            }
+        }
+
+        return name;
+    }
+
+    /**
+     * Get the primary name for the thing
+     *
+     * @return null if no name found
+     */
     public String getPrimaryName() {
         if (names.isEmpty()) {
             return null;
@@ -38,10 +72,14 @@ public class Thing extends AbstractXmlMapping {
             }
         }
 
-        // No primary name found, use the first one.
-        return names.get(0).getValue();
+        return null;
     }
 
+    /**
+     * Get a list of the alternative names
+     *
+     * @return
+     */
     public List<String> getAlternativeNames() {
         List<String> results = new ArrayList<>();
         for (ThingName name : names) {
