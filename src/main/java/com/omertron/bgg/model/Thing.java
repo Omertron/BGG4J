@@ -28,12 +28,18 @@ public class Thing extends AbstractXmlMapping {
     }
 
     public String getPrimaryName() {
+        if (names.isEmpty()) {
+            return null;
+        }
+
         for (ThingName name : names) {
             if (name.getType() == PrimaryAlternative.PRIMARY) {
                 return name.getValue();
             }
         }
-        return null;
+
+        // No primary name found, use the first one.
+        return names.get(0).getValue();
     }
 
     public List<String> getAlternativeNames() {
