@@ -73,7 +73,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <distribution.format>zip</distribution.format>
         <!-- Versions -->
-        <version.slf4j>1.7.21</version.slf4j>
+        <version.slf4j>1.7.22</version.slf4j>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
         <!-- Timestamps -->
