@@ -64,7 +64,7 @@
  
     <ciManagement>
         <system>Jenkins CI</system>
-        <url>http://jenkins.omertron.com/job/BGG4J/</url>
+        <url>http://jenkins.omertron.com/job/API-BGG/</url>
     </ciManagement>
     
     <properties>
