@@ -8,8 +8,8 @@ import com.omertron.bgg.enums.ThingType;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -69,8 +69,8 @@ public class BggApiBuilder extends ApiBuilder {
     }
 
     /**
-     * Specifies the id of the thing(s) to retrieve. To request multiple things
-     * with a single query, NNN can specify a comma-delimited list of ids.
+     * Specifies the id of the thing(s) to retrieve. To request multiple things with a single query, NNN can specify a
+     * comma-delimited list of ids.
      *
      * @param id
      * @return
@@ -81,9 +81,8 @@ public class BggApiBuilder extends ApiBuilder {
     }
 
     /**
-     * Specifies that, regardless of the type of thing asked for by id, the
-     * results are filtered by the THINGTYPE(s) specified. Multiple THINGTYPEs
-     * can be specified in a comma-delimited list.
+     * Specifies that, regardless of the type of thing asked for by id, the results are filtered by the THINGTYPE(s) specified.
+     * Multiple THINGTYPEs can be specified in a comma-delimited list.
      *
      * @param value
      * @return
@@ -95,19 +94,13 @@ public class BggApiBuilder extends ApiBuilder {
 
     public BggApiBuilder thingType(ThingType... values) {
         if (values != null) {
-            List<String> elements = new ArrayList<>();
-            for (ThingType tt : values) {
-                elements.add(tt.toString());
-            }
-            String param = String.join(",", elements);
-            super.parameter("type", param, false);
+            super.parameter("type", StringUtils.join(values, ","), false);
         }
         return this;
     }
 
     /**
-     * Defaults to 1, controls the page of data to see for historical info,
-     * comments, and ratings data.
+     * Defaults to 1, controls the page of data to see for historical info, comments, and ratings data.
      *
      * @param value
      * @return
