@@ -26,33 +26,180 @@ import org.apache.commons.lang3.StringUtils;
  * @author stuart
  */
 public enum IncludeExclude {
+    /**
+     * Returns more abbreviated results.<br>
+     * Used in: Collection<br>
+     * Use: Include
+     */
     BRIEF,
+    /**
+     * Turns on optional buddies reporting.<br>
+     * Used in: Users<br>
+     * Use: Include
+     */
     BUDDIES,
+    /**
+     * Filter for items that have been commented.<br>
+     * Used in: Collection<br>
+     * Use: Include & Exclude
+     */
     COMMENT,
+    /**
+     * Returns all commnts about the item. Also includes ratings when commented.<br>
+     * Used in: Items<br>
+     * Use: Include
+     *
+     */
     COMMENTS,
+    /**
+     * Limit results to items that match the SEARCH_QUERY exactly.<br>
+     * Used in: Search<br>
+     * Use: Include & Exclude
+     */
     EXACT,
+    /**
+     * Turns on optional guilds reporting.<br>
+     * Used in: Users<br>
+     * Use: Include
+     */
     GUILDS,
+    /**
+     * Filter on whether there is a comment in the Has Parts field of the item.<br>
+     * Used in: Collection<br>
+     * Use: Include & Exclude
+     */
     HASPARTS,
+    /**
+     * Returns historical data over time.<br>
+     * Used in: Items<br>
+     * Use: Include
+     */
     HISTORICAL,
+    /**
+     * Include the user's Hot 10 list from their profile.<br>
+     * Used in: Users<br>
+     * Use: Include
+     */
     HOT,
+    /**
+     * Returns marketplace data.<br>
+     * Used in: Items<br>
+     * Use: Include
+     *
+     */
     MARKETPLACE,
+    /**
+     * Filter for owned games.<br>
+     * Used in: Collection<br>
+     * Use: Include & Exclude
+     */
     OWN,
+    /**
+     * Filter for whether an item has been played.<br>
+     * Used in: Collection<br>
+     * Use: Include & Exclude
+     */
     PLAYED,
+    /**
+     * Filter for pre-ordered games.<br>
+     * Used in: Collection<br>
+     * Use: Include & Exclude
+     */
     PREORDERED,
+    /**
+     * Filter for games marked previously owned.<br>
+     * Used in: Collection<br>
+     * Use: Include & Exclude
+     */
     PREVOWNED,
+    /**
+     * Filter for whether an item has been rated.<br>
+     * Used in: Collection<br>
+     * Use: Include & Exclude
+     */
     RATED,
+    /**
+     * Returns all ratings for the item. Also includes comments when rated.<br>
+     * The ratingcomments and comments parameters cannot be used together; comments parameter takes precedence if both are
+     * specified.<br>
+     * Ratings are sorted in descending rating value, based on the highest rating they have assigned to that item (each item in the
+     * collection can have a different rating).<br>
+     * Used in: Items<br>
+     * Use: Include
+     *
+     */
     RATINGCOMMENTS,
+    /**
+     * Filter to show private collection info. Only works when viewing your own collection and you are logged in.<br>
+     * Used in: Collection<br>
+     * Use: Include
+     */
     SHOWPRIVATE,
+    /**
+     * Returns expanded rating/ranking info for the collection.<br>
+     * Used in: Collection, Items<br>
+     * Use: Include
+     */
     STATS,
+    /**
+     * Include the user's top 10 list from their profile.<br>
+     * Used in: Users<br>
+     * Use: Include
+     */
     TOP,
+    /**
+     * Filter for items marked for trade.<br>
+     * Used in: Collection<br>
+     * Use: Include & Exclude
+     */
     TRADE,
+    /**
+     * Returns version info for the item.<br>
+     * Used in: Items<br>
+     * Use: Include
+     */
     VERSIONS,
+    /**
+     * Filter for items marked for trade.<br>
+     * Used in: Collection<br>
+     * Use: Include
+     */
     VERSION,
+    /**
+     * Returns videos for the item.<br>
+     * Used in: Items<br>
+     * Use: Include
+     */
     VIDEOS,
+    /**
+     * Filter for items wanted in trade.<br>
+     * Used in: Collection<br>
+     * Use: Include & Exclude
+     */
     WANT,
+    /**
+     * Filter on whether there is a comment in the Wants Parts field of the item.<br>
+     * Used in: Collection<br>
+     * Use: Include & Exclude
+     */
     WANTPARTS,
+    /**
+     * Filter for items marked as wanting to buy.<br>
+     * Used in: Collection<br>
+     * Use: Include & Exclude
+     */
     WANTTOBUY,
+    /**
+     * Filter for items marked as wanting to play.<br>
+     * Used in: Collection<br>
+     * Use: Include & Exclude
+     */
     WANTTOPLAY,
+    /**
+     * Filter for items on the wishlist.<br>
+     * Used in: Collection<br>
+     * Use: Include & Exclude
+     */
     WISHLIST;
 
     /**
