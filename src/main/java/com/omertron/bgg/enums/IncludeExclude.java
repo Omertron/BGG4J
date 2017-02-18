@@ -160,7 +160,7 @@ public enum IncludeExclude {
      */
     VERSIONS,
     /**
-     * Filter for items marked for trade.<br>
+     * Returns version info for each item in your collection.<br>
      * Used in: Collection<br>
      * Use: Include
      */
