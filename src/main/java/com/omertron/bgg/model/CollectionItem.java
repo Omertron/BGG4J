@@ -51,6 +51,12 @@ public class CollectionItem extends AbstractXmlMapping {
     private int numPlays;
     @JacksonXmlProperty(localName = "comment")
     private String comment;
+    @JacksonXmlProperty(localName = "stats")
+    private Stats stats;
+    @JacksonXmlProperty(localName = "wishlistcomment")
+    private String wishlistComment;
+    @JacksonXmlProperty(localName = "conditiontext")
+    private String conditionText;
 
     public String getObjectType() {
         return objectType;
@@ -146,6 +152,30 @@ public class CollectionItem extends AbstractXmlMapping {
 
     public void setOriginalName(String originalName) {
         this.originalName = originalName;
+    }
+
+    public Stats getStats() {
+        return stats;
+    }
+
+    public void setStats(Stats stats) {
+        this.stats = stats;
+    }
+
+    public String getWishlistComment() {
+        return wishlistComment;
+    }
+
+    public void setWishlistComment(String wishlistComment) {
+        this.wishlistComment = wishlistComment;
+    }
+
+    public String getConditionText() {
+        return conditionText;
+    }
+
+    public void setConditionText(String conditionText) {
+        this.conditionText = conditionText;
     }
 
 }
