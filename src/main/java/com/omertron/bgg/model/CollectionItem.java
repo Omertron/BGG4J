@@ -57,6 +57,8 @@ public class CollectionItem extends AbstractXmlMapping {
     private String wishlistComment;
     @JacksonXmlProperty(localName = "conditiontext")
     private String conditionText;
+    @JacksonXmlProperty(localName = "version")
+    private BoardGameVersion version;
 
     public String getObjectType() {
         return objectType;
@@ -176,6 +178,14 @@ public class CollectionItem extends AbstractXmlMapping {
 
     public void setConditionText(String conditionText) {
         this.conditionText = conditionText;
+    }
+
+    public BoardGameVersion getVersion() {
+        return version;
+    }
+
+    public void setVersion(BoardGameVersion version) {
+        this.version = version;
     }
 
 }

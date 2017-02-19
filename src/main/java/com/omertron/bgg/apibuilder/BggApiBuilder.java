@@ -94,8 +94,10 @@ public class BggApiBuilder extends ApiBuilder {
      * @param id
      * @return
      */
-    public BggApiBuilder id(int id) {
-        super.parameter("id", id);
+    public BggApiBuilder id(Integer id) {
+        if (id != null && id > 0) {
+            super.parameter("id", id);
+        }
         return this;
     }
 

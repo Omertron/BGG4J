@@ -21,49 +21,47 @@ package com.omertron.bgg.model;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-/**
- *
- * @author stuar
- */
-public class IdValue extends AbstractXmlMapping {
+public class BoardGameVersion extends AbstractXmlMapping {
 
-    @JacksonXmlProperty(localName = "id", isAttribute = true)
-    private int id;
-    private String value;
+    @JacksonXmlProperty(localName = "item")
+    private BoardGame item;
+    @JacksonXmlProperty(localName = "imageid")
+    private String imageid;
+    @JacksonXmlProperty(localName = "year")
+    private int year;
+    @JacksonXmlProperty(localName = "publisher")
+    private IdValue publisher;
 
-    public IdValue() {
+    public BoardGame getItem() {
+        return item;
     }
 
-    public IdValue(int id, String value) {
-        this.id = id;
-        this.value = value;
+    public void setItem(BoardGame item) {
+        this.item = item;
     }
 
-    public int getId() {
-        return id;
+    public String getImageid() {
+        return imageid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setImageid(String imageid) {
+        this.imageid = imageid;
     }
 
-    public String getValue() {
-        return value;
+    public int getYear() {
+        return year;
     }
 
-    @JacksonXmlProperty(localName = "publisherid", isAttribute = true)
-    public void setPublisherId(int value) {
-        this.id = value;
+    public void setYear(int year) {
+        this.year = year;
     }
 
-    @JacksonXmlProperty(localName = "value", isAttribute = true)
-    public void setValue(String value) {
-        this.value = value;
+    public IdValue getPublisher() {
+        return publisher;
     }
 
-    @JacksonXmlProperty(localName = "name", isAttribute = true)
-    public void setName(String name) {
-        this.value = name;
+    public void setPublisher(IdValue publisher) {
+        this.publisher = publisher;
     }
 
 }

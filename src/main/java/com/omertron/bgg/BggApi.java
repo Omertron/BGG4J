@@ -63,38 +63,71 @@ public class BggApi {
         mapper = new XmlMapper();
     }
 
+    /**
+     * Get information on a board game
+     *
+     * @param id
+     * @return
+     * @throws BggException
+     */
     public List<BoardGameExtended> getBoardGameInfo(int id) throws BggException {
+        List<IncludeExclude> includes = new ArrayList<>();
+        includes.add(IncludeExclude.COMMENTS);
+        includes.add(IncludeExclude.HISTORICAL);
+        includes.add(IncludeExclude.MARKETPLACE);
+        includes.add(IncludeExclude.RATINGCOMMENTS);
+        includes.add(IncludeExclude.STATS);
+        includes.add(IncludeExclude.VERSIONS);
+        includes.add(IncludeExclude.VIDEOS);
+
+        return getBoardGameInfo(ThingType.BOARDGAME, id, includes, null);
+    }
+
+    /**
+     * Get information on a "thing" (board game, expansions or accessories)
+     *
+     * @param type
+     * @param id
+     * @param includes
+     * @param excludes
+     * @return
+     * @throws BggException
+     */
+    public List<BoardGameExtended> getBoardGameInfo(ThingType type, int id, List<IncludeExclude> includes, List<IncludeExclude> excludes) throws BggException {
         URL url = new BggApiBuilder(BASE_URL)
                 .command(Command.THING)
                 .id(id)
-                .thingType(ThingType.BOARDGAME)
-                .include(IncludeExclude.VERSIONS,
-                        IncludeExclude.VIDEOS,
-                        IncludeExclude.STATS,
-                        IncludeExclude.HISTORICAL,
-                        IncludeExclude.MARKETPLACE,
-                        IncludeExclude.COMMENTS,
-                        IncludeExclude.RATINGCOMMENTS)
+                .thingType(type)
+                .include(includes)
+                .exclude(excludes)
                 .page(1)
                 .pageSize(25)
                 .buildUrl();
 
-        BoardGameWrapper bgl;
+        BoardGameWrapper wrapper;
         try {
-            LOG.info("URL: {}", url);
+            LOG.debug("URL: {}", url);
             String webpage = httpTools.retrieveWebpage(url);
-            bgl = mapper.readValue(webpage, BoardGameWrapper.class);
+            wrapper = mapper.readValue(webpage, BoardGameWrapper.class);
         } catch (IOException ex) {
             throw new BggException(ApiExceptionType.MAPPING_FAILED, "Failed to map to BoardGameList", url, ex);
         }
 
-        if (bgl.getItems() != null) {
-            return bgl.getItems();
+        if (wrapper.getItems() != null) {
+            return wrapper.getItems();
         } else {
             return new ArrayList<>();
         }
     }
 
+    /**
+     * Get the family information on a particular family
+     *
+     * @param id
+     * @param familyType
+     * @return
+     * @throws BggException
+     */
     public List<Family> getFamilyItems(int id, FamilyType familyType) throws BggException {
         URL url = new BggApiBuilder(BASE_URL)
                 .command(Command.FAMILY)
@@ -102,7 +135,7 @@ public class BggApi {
                 .id(id)
                 .buildUrl();
 
-        LOG.info("URL: {}", url);
+        LOG.debug("URL: {}", url);
 
         try {
             String webpage = httpTools.retrieveWebpage(url);
@@ -123,7 +156,7 @@ public class BggApi {
                         IncludeExclude.TOP)
                 .buildUrl();
 
-        LOG.info("URL: {}", url);
+        LOG.debug("URL: {}", url);
 
         try {
             String webpage = httpTools.retrieveWebpage(url);
@@ -136,23 +169,25 @@ public class BggApi {
     /**
      * Get information on a users collection
      *
-     * @param username
-     * @param include
-     * @param exclude
+     * @param username The user to get the collection of
+     * @param id Get information on a specific game, can be null or zero
+     * @param include Flags to include items in the search
+     * @param exclude Flags to exclude items in the search
      * @return
      * @throws BggException
      */
-    public CollectionItemWrapper getCollectionInfo(String username, List<IncludeExclude> include, List<IncludeExclude> exclude) throws BggException {
+    public CollectionItemWrapper getCollectionInfo(String username, Integer id, List<IncludeExclude> include, List<IncludeExclude> exclude) throws BggException {
         URL url = new BggApiBuilder(BASE_URL)
                 .command(Command.COLLECTION)
                 .username(username)
+                .id(id)
                 // Add the includes 
                 .include(include)
                 // Add the excludes
                 .exclude(exclude)
                 .buildUrl();
 
-        LOG.info("URL: {}", url);
+        LOG.debug("URL: {}", url);
 
         String webpage = httpTools.retrieveWebpage(url);
         try {
@@ -190,7 +225,7 @@ public class BggApi {
 
         URL url = builder.buildUrl();
 
-        LOG.info("URL: {}", url);
+        LOG.debug("URL: {}", url);
 
         String webpage = httpTools.retrieveWebpage(url);
         try {
