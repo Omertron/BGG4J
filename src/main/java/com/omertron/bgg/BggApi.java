@@ -146,10 +146,17 @@ public class BggApi {
         }
     }
 
-    public UserInfo getUserInfo(String name) throws BggException {
+    /**
+     * Get information on a user
+     *
+     * @param username
+     * @return
+     * @throws BggException
+     */
+    public UserInfo getUserInfo(String username) throws BggException {
         URL url = new BggApiBuilder(BASE_URL)
                 .command(Command.USER)
-                .name(name)
+                .name(username)
                 .include(IncludeExclude.BUDDIES,
                         IncludeExclude.GUILDS,
                         IncludeExclude.HOT,
