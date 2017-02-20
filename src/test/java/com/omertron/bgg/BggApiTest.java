@@ -61,10 +61,10 @@ public class BggApiTest {
     @BeforeClass
     public static void setUpClass() {
         TestLogger.configure();
-        TestValue tv = new TestValue("chaddyboy_2000", 4994);
+        TestValue tv = new TestValue("omertron", 1170953);
         USERNAMES.add(tv);
-
-        tv = new TestValue("omertron", 1170953);
+        tv = new TestValue("chaddyboy_2000", 4994);
+        tv.addIgnore("MEMORY");
         USERNAMES.add(tv);
 
         tv = new TestValue("Dlthorpe", 685930);
@@ -196,9 +196,13 @@ public class BggApiTest {
 //        includes.add(IncludeExclude.WISHLIST);
 
             includes.add(IncludeExclude.COMMENT);
-            includes.add(IncludeExclude.STATS);
-            includes.add(IncludeExclude.RATED);
-            includes.add(IncludeExclude.VERSION);
+            if (test.containsIgnore("MEMORY")) {
+                LOG.info("Stats, Rated and version skipped due to memory issues");
+            } else {
+                includes.add(IncludeExclude.STATS);
+                includes.add(IncludeExclude.RATED);
+                includes.add(IncludeExclude.VERSION);
+            }
 
             CollectionItemWrapper result = bggApi.getCollectionInfo(test.getUsername(), null, includes, excludes);
 
