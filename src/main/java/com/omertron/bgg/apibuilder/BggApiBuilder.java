@@ -88,8 +88,7 @@ public class BggApiBuilder extends ApiBuilder {
     }
 
     /**
-     * Specifies the id of the thing(s) to retrieve. To request multiple things with a single query, NNN can specify a
-     * comma-delimited list of ids.
+     * Specifies the id of the thing(s) to retrieve.
      *
      * @param id
      * @return
@@ -102,8 +101,22 @@ public class BggApiBuilder extends ApiBuilder {
     }
 
     /**
-     * Specifies that, regardless of the type of thing asked for by id, the results are filtered by the THINGTYPE(s) specified.
-     * Multiple THINGTYPEs can be specified in a comma-delimited list.
+     * Specifies the id of the thing(s) to retrieve.<br>
+     * To request multiple things with a single query, NNN can specify a comma-delimited list of ids.
+     *
+     * @param id
+     * @return
+     */
+    public BggApiBuilder id(String id) {
+        if (StringUtils.isNotBlank(id)) {
+            super.parameter("id", id);
+        }
+        return this;
+    }
+
+    /**
+     * Specifies that, regardless of the type of thing asked for by id, the results are filtered by the THINGTYPE(s) specified.<br>
+     * Multiple THINGTYPEs can be specified.
      *
      * @param value
      * @return
@@ -113,6 +126,13 @@ public class BggApiBuilder extends ApiBuilder {
         return this;
     }
 
+    /**
+     * Specifies that, regardless of the type of thing asked for by id, the results are filtered by the THINGTYPE(s) specified.<br>
+     * Multiple THINGTYPEs can be specified.
+     *
+     * @param values
+     * @return
+     */
     public BggApiBuilder thingType(ThingType... values) {
         if (values != null) {
             super.parameter("type", StringUtils.join(values, ","), false);

@@ -183,7 +183,7 @@ public class BggApi {
      * @return
      * @throws BggException
      */
-    public CollectionItemWrapper getCollectionInfo(String username, Integer id, List<IncludeExclude> include, List<IncludeExclude> exclude) throws BggException {
+    public CollectionItemWrapper getCollectionInfo(String username, String id, List<IncludeExclude> include, List<IncludeExclude> exclude) throws BggException {
         URL url = new BggApiBuilder(BASE_URL)
                 .command(Command.COLLECTION)
                 .username(username)
