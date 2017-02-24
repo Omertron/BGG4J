@@ -30,8 +30,6 @@ import com.omertron.bgg.model.UserInfo;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
@@ -99,7 +97,7 @@ public class BggApiTest {
      *
      * @throws com.omertron.bgg.BggException
      */
-//    @Test
+    @Test
     public void testGetBoardGameInfo() throws BggException {
         LOG.info("getBoardGameInfo");
 
@@ -127,7 +125,7 @@ public class BggApiTest {
      *
      * @throws com.omertron.bgg.BggException
      */
-//    @Test
+    @Test
     public void testGetFamilyItems() throws BggException {
         LOG.info("getFamilyItems");
 
@@ -147,7 +145,7 @@ public class BggApiTest {
      *
      * @throws com.omertron.bgg.BggException
      */
-//    @Test
+    @Test
     public void testGetUserInfo() throws BggException {
         LOG.info("getUserInfo");
 
@@ -185,11 +183,11 @@ public class BggApiTest {
 
         LOG.info("Found {} results", result.getTotalItems());
 
-        assertNotNull(result.getItems());
-        assertFalse(result.getItems().isEmpty());
+        assertNotNull("Null items", result.getItems());
+        assertFalse("Empty items", result.getItems().isEmpty());
 
         for (CollectionItem item : result.getItems()) {
-            LOG.info("{}", ToStringBuilder.reflectionToString(item, ToStringStyle.MULTI_LINE_STYLE));
+            assertNotNull("Null collection item", item);
         }
 
     }
@@ -199,7 +197,7 @@ public class BggApiTest {
      *
      * @throws com.omertron.bgg.BggException
      */
-//    @Test
+    @Test
     public void testGetCollectionInfo() throws BggException {
         LOG.info("getCollectionInfo");
 
@@ -242,7 +240,7 @@ public class BggApiTest {
      *
      * @throws com.omertron.bgg.BggException
      */
-//    @Test
+    @Test
     public void testSearchBoardGame() throws BggException {
         LOG.info("searchBoardGame");
         String query = "Sushi Go";
