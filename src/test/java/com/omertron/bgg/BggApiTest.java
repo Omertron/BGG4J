@@ -22,6 +22,7 @@ package com.omertron.bgg;
 import com.omertron.bgg.enums.FamilyType;
 import com.omertron.bgg.enums.IncludeExclude;
 import com.omertron.bgg.model.BoardGameExtended;
+import com.omertron.bgg.model.CollectionItem;
 import com.omertron.bgg.model.CollectionItemWrapper;
 import com.omertron.bgg.model.Family;
 import com.omertron.bgg.model.SearchWrapper;
@@ -29,6 +30,8 @@ import com.omertron.bgg.model.UserInfo;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
@@ -169,12 +172,34 @@ public class BggApiTest {
         }
     }
 
+    @Test
+    public void testGetCollectionId() throws BggException {
+        LOG.info("getCollectionInfo with ID");
+
+        List<IncludeExclude> includes = new ArrayList<>();
+        List<IncludeExclude> excludes = new ArrayList<>();
+
+        includes.add(IncludeExclude.STATS);
+
+        CollectionItemWrapper result = bggApi.getCollectionInfo("omertron", "124361,142451,159675", includes, excludes);
+
+        LOG.info("Found {} results", result.getTotalItems());
+
+        assertNotNull(result.getItems());
+        assertFalse(result.getItems().isEmpty());
+
+        for (CollectionItem item : result.getItems()) {
+            LOG.info("{}", ToStringBuilder.reflectionToString(item, ToStringStyle.MULTI_LINE_STYLE));
+        }
+
+    }
+
     /**
      * Test of getCollectionInfo method, of class BggApi.
      *
      * @throws com.omertron.bgg.BggException
      */
-    @Test
+//    @Test
     public void testGetCollectionInfo() throws BggException {
         LOG.info("getCollectionInfo");
 

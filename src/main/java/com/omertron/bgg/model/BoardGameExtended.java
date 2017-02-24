@@ -40,9 +40,9 @@ public class BoardGameExtended extends BoardGame {
     private String description;
     private Integer minPlayers;
     private Integer maxPlayers;
-    private Integer playingtime;
-    private Integer minPlaytime;
-    private Integer maxPlaytime;
+    private Integer playingTime;
+    private Integer minPlayTime;
+    private Integer maxPlayTime;
     private Integer minAge;
 
     @JacksonXmlProperty(localName = "videos")
@@ -80,31 +80,31 @@ public class BoardGameExtended extends BoardGame {
         this.maxPlayers = maxPlayers.getValue();
     }
 
-    public Integer getPlayingtime() {
-        return playingtime;
+    public Integer getPlayingTime() {
+        return playingTime;
     }
 
     @JsonSetter("playingtime")
-    public void setPlayingtime(ValueHolder<Integer> playingtime) {
-        this.playingtime = playingtime.getValue();
+    public void setPlayingTime(ValueHolder<Integer> playingTime) {
+        this.playingTime = playingTime.getValue();
     }
 
-    public Integer getMinPlaytime() {
-        return minPlaytime;
+    public Integer getMinPlayTime() {
+        return minPlayTime;
     }
 
     @JsonSetter("minplaytime")
     public void setMinPlaytime(ValueHolder<Integer> minPlaytime) {
-        this.minPlaytime = minPlaytime.getValue();
+        this.minPlayTime = minPlaytime.getValue();
     }
 
-    public Integer getMaxPlaytime() {
-        return maxPlaytime;
+    public Integer getMaxPlayTime() {
+        return maxPlayTime;
     }
 
     @JsonSetter("maxplaytime")
     public void setMaxPlaytime(ValueHolder<Integer> maxPlaytime) {
-        this.maxPlaytime = maxPlaytime.getValue();
+        this.maxPlayTime = maxPlaytime.getValue();
     }
 
     public Integer getMinAge() {
