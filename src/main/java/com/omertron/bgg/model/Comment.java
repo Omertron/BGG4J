@@ -47,7 +47,7 @@ public class Comment extends AbstractXmlMapping {
     @JsonSetter("rating")
     public void setRating(String rating) {
         // If the value is N/A, ignore it
-        if (rating.equalsIgnoreCase("N/A")) {
+        if ("N/A".equalsIgnoreCase(rating)) {
             this.rating = null;
         } else {
             this.rating = Float.parseFloat(rating);

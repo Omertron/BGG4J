@@ -37,6 +37,7 @@ public class RankedList extends AbstractXmlMapping {
     private String name;
 
     public RankedList() {
+        // Default constructor
     }
 
     public int getRank() {

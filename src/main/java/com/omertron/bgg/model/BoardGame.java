@@ -26,12 +26,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author Omertron
  */
 public class BoardGame extends Thing {
+
+    private static final Logger LOG = LoggerFactory.getLogger(BoardGame.class);
 
     @JacksonXmlProperty(localName = "image")
     private String image;
@@ -64,7 +68,7 @@ public class BoardGame extends Thing {
 
     @JsonSetter("link")
     public void setLink(Link link) {
-        if (link.getType().equalsIgnoreCase("language")) {
+        if ("language".equalsIgnoreCase(link.getType())) {
             this.language = new IdValue(link.getId(), link.getValue());
             return;
         }

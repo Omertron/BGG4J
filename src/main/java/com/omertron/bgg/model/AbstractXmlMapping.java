@@ -34,7 +34,7 @@ import org.slf4j.LoggerFactory;
 public abstract class AbstractXmlMapping implements Serializable {
 
     private static final long serialVersionUID = 100L;
-    protected static final Logger LOG = LoggerFactory.getLogger(AbstractXmlMapping.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AbstractXmlMapping.class);
 
     /**
      * Handle unknown properties and print a message

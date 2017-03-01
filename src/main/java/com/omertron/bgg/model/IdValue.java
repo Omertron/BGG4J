@@ -31,7 +31,8 @@ public class IdValue extends AbstractXmlMapping {
     private int id;
     private String value;
 
-    public IdValue() {
+    protected IdValue() {
+        // Default constructor
     }
 
     public IdValue(int id, String value) {

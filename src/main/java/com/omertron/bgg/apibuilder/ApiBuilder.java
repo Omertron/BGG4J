@@ -27,13 +27,16 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>
- * Quickly and efficiently assemble URLs which contain both in-URL fields and appended parameters.</p>
+ * Quickly and efficiently assemble URLs which contain both in-URL fields and
+ * appended parameters.</p>
  *
  * <p>
- * Parts of the code for this class are from Nabeel Mukhtar's github-java-sdk library.</p>
+ * Parts of the code for this class are from Nabeel Mukhtar's github-java-sdk
+ * library.</p>
  *
  * @author Jake Wharton <jakewharton@gmail.com>
  */
@@ -218,7 +221,8 @@ public class ApiBuilder {
     /**
      * Build the URL.
      *
-     * @param appendAllParameters Whether to append parameters that were not explicitly defined in the URI.
+     * @param appendAllParameters Whether to append parameters that were not
+     * explicitly defined in the URI.
      * @return String representation of the URL.
      */
     protected URL buildUrl(boolean appendAllParameters) {
@@ -252,12 +256,9 @@ public class ApiBuilder {
                     urlBuilder.append(this.parametersMap.get(placeHolder));
 
                     usedParameters.add(placeHolder);
-                } else {
-                    //We did not find a binding for the place holder. Skip it.
-                    //urlBuilder.append(API_URLS_PLACEHOLDER_START);
-                    //urlBuilder.append(placeHolder);
-                    //urlBuilder.append(API_URLS_PLACEHOLDER_END);
                 }
+                // ELSE: We did not find a binding for the place holder. Skip it.
+
                 placeHolderFlag = false;
             } else if (placeHolderFlag) {
                 placeHolderBuilder.append(this.urlFormat.charAt(i));
@@ -283,7 +284,6 @@ public class ApiBuilder {
                 }
             }
         }
-//        return urlBuilder.toString();
 
         try {
             return new URL(urlBuilder.toString());
@@ -302,8 +302,9 @@ public class ApiBuilder {
     protected static String encodeUrl(String content) {
         try {
             return URLEncoder.encode(content, ApiService.CONTENT_ENCODING);
-        } catch (UnsupportedEncodingException e) {
+        } catch (UnsupportedEncodingException ex) {
             // should never be here..
+            LoggerFactory.getLogger(ApiBuilder.class).warn("Failed to encode content: {}", ex.getMessage(), ex);
             return content;
         }
     }

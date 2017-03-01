@@ -48,7 +48,7 @@ import org.slf4j.LoggerFactory;
  */
 public class BggApiTest {
 
-    protected static final Logger LOG = LoggerFactory.getLogger(BggApiTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BggApiTest.class);
     private final BggApi bggApi;
 
     private static final List<TestValue> USERNAMES = new ArrayList<>();
