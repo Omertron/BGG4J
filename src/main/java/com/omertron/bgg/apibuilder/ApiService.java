@@ -35,18 +35,22 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.zip.GZIPInputStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>
  * HTTP method execution.</p>
  *
  * <p>
- * Parts of the code for this class are from Nabeel Mukhtar's github-java-sdk library.</p>
+ * Parts of the code for this class are from Nabeel Mukhtar's github-java-sdk
+ * library.</p>
  *
  * @author Jake Wharton <jakewharton@gmail.com>
  */
 public class ApiService {
 
+    private static final Logger LOG = LoggerFactory.getLogger(ApiService.class);
     protected static final String CONTENT_ENCODING = "UTF-8";
 
     private static final int DEFAULT_TIMEOUT_CONNECT = -1;
@@ -391,8 +395,8 @@ public class ApiService {
             if (is != null) {
                 is.close();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            LOG.warn("Failed to close stream: {}", ex.getMessage(), ex);
         }
     }
 
@@ -406,8 +410,8 @@ public class ApiService {
             if (connection != null) {
                 connection.disconnect();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            LOG.warn("Failed to close connection: {}", ex.getMessage(), ex);
         }
     }
 
@@ -463,13 +467,13 @@ public class ApiService {
             while ((line = reader.readLine()) != null) {
                 sb.append(line).append("\n");
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            LOG.warn("Failed to close stream: {}", ex.getMessage(), ex);
         } finally {
             try {
                 is.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (IOException ex) {
+                LOG.warn("Failed to close stream: {}", ex.getMessage(), ex);
             }
         }
 
