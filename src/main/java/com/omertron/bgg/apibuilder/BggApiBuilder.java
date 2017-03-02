@@ -39,6 +39,7 @@ import org.slf4j.LoggerFactory;
 public class BggApiBuilder extends ApiBuilder {
 
     private static final Logger LOG = LoggerFactory.getLogger(BggApiBuilder.class);
+    private static final String NOT_SUPPORTED = "Not supported";
 
     public BggApiBuilder(String urlFormat) {
         super(urlFormat);
@@ -59,16 +60,16 @@ public class BggApiBuilder extends ApiBuilder {
                 // Supported
                 break;
             case FORUMLIST:
-                throw new ApiException("Not supported");
+                throw new ApiException(NOT_SUPPORTED);
             case FORUM:
-                throw new ApiException("Not supported");
+                throw new ApiException(NOT_SUPPORTED);
             case THREAD:
-                throw new ApiException("Not supported");
+                throw new ApiException(NOT_SUPPORTED);
             case USER:
                 // Supported
                 break;
             case GUILD:
-                throw new ApiException("Not supported");
+                throw new ApiException(NOT_SUPPORTED);
             case PLAYS:
                 // Supported
                 break;
@@ -76,12 +77,12 @@ public class BggApiBuilder extends ApiBuilder {
                 // Supported
                 break;
             case HOT:
-                throw new ApiException("Not supported");
+                throw new ApiException(NOT_SUPPORTED);
             case SEARCH:
                 // Supported
                 break;
             default:
-                throw new ApiException("Not supported");
+                throw new ApiException(NOT_SUPPORTED);
         }
         super.field("{command}", command.toString());
         return this;
