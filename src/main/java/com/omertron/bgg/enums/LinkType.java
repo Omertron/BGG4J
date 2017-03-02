@@ -34,7 +34,8 @@ public enum LinkType {
     BOARDGAMEINTEGRATION,
     BOARDGAMEDESIGNER,
     BOARDGAMEARTIST,
-    BOARDGAMEPUBLISHER;
+    BOARDGAMEPUBLISHER,
+    BOARDGAMEIMPLEMENTATION;
 
     public String getShortName() {
         return this.name().substring(9).toLowerCase();
