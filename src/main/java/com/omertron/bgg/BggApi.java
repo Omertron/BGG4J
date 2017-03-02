@@ -73,10 +73,6 @@ public class BggApi {
      */
     public List<BoardGameExtended> getBoardGameInfo(int id) throws BggException {
         List<IncludeExclude> includes = new ArrayList<>();
-        includes.add(IncludeExclude.COMMENTS);
-        includes.add(IncludeExclude.HISTORICAL);
-        includes.add(IncludeExclude.MARKETPLACE);
-        includes.add(IncludeExclude.RATINGCOMMENTS);
         includes.add(IncludeExclude.STATS);
         includes.add(IncludeExclude.VERSIONS);
         includes.add(IncludeExclude.VIDEOS);
