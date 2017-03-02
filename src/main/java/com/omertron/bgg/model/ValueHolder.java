@@ -32,7 +32,7 @@ public class ValueHolder<T> extends AbstractXmlMapping {
     private T value;
 
     public T getValue() {
-        return (T) value;
+        return value;
     }
 
     public void setValue(T value) {

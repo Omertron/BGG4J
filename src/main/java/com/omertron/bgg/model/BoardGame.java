@@ -85,6 +85,7 @@ public class BoardGame extends Thing {
             boardGameLinks.put(linkType, results);
         } catch (IllegalArgumentException ex) {
             LOG.warn("Unknown category '{}' for link", link.getType());
+            LOG.trace("Exception: {}", ex.getMessage(), ex);
         }
     }
 

@@ -53,6 +53,7 @@ public class BggApi {
      * API URL base.
      */
     private static final String BASE_URL = "http://www.boardgamegeek.com/xmlapi2/{command}";
+    private static final String LOG_URL = "URL: {}";
 
     public BggApi() {
         this(new SimpleHttpClientBuilder().build());
@@ -106,7 +107,7 @@ public class BggApi {
 
         BoardGameWrapper wrapper;
         try {
-            LOG.debug("URL: {}", url);
+            LOG.debug(LOG_URL, url);
             String webpage = httpTools.retrieveWebpage(url);
             wrapper = mapper.readValue(webpage, BoardGameWrapper.class);
         } catch (IOException ex) {
@@ -135,7 +136,7 @@ public class BggApi {
                 .id(id)
                 .buildUrl();
 
-        LOG.debug("URL: {}", url);
+        LOG.debug(LOG_URL, url);
 
         try {
             String webpage = httpTools.retrieveWebpage(url);
@@ -163,7 +164,7 @@ public class BggApi {
                         IncludeExclude.TOP)
                 .buildUrl();
 
-        LOG.debug("URL: {}", url);
+        LOG.debug(LOG_URL, url);
 
         try {
             String webpage = httpTools.retrieveWebpage(url);
@@ -194,7 +195,7 @@ public class BggApi {
                 .exclude(exclude)
                 .buildUrl();
 
-        LOG.debug("URL: {}", url);
+        LOG.debug(LOG_URL, url);
 
         String webpage = httpTools.retrieveWebpage(url);
         try {
@@ -232,7 +233,7 @@ public class BggApi {
 
         URL url = builder.buildUrl();
 
-        LOG.debug("URL: {}", url);
+        LOG.debug(LOG_URL, url);
 
         String webpage = httpTools.retrieveWebpage(url);
         try {

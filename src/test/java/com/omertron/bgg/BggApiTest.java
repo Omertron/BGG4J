@@ -231,7 +231,7 @@ public class BggApiTest {
 
             assertTrue("No collection found", result.getTotalItems() > 0);
             assertNotNull("Empty collection", result.getItems());
-            assertTrue("No collection items found", result.getItems().size() > 0);
+            assertFalse("No collection items found", result.getItems().isEmpty());
         }
     }
 

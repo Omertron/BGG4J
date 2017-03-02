@@ -468,7 +468,7 @@ public class ApiService {
                 sb.append(line).append("\n");
             }
         } catch (IOException ex) {
-            LOG.warn("Failed to close stream: {}", ex.getMessage(), ex);
+            LOG.warn("Failed to read stream: {}", ex.getMessage(), ex);
         } finally {
             try {
                 is.close();
