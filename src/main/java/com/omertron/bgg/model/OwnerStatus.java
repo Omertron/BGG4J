@@ -20,8 +20,9 @@
 package com.omertron.bgg.model;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.apache.commons.lang3.BooleanUtils;
 
-public class OwnerStatus {
+public class OwnerStatus extends AbstractXmlMapping {
 
     @JacksonXmlProperty(localName = "own", isAttribute = true)
     private boolean own;
@@ -41,7 +42,7 @@ public class OwnerStatus {
     private int wishlistPriority;
     @JacksonXmlProperty(localName = "preordered", isAttribute = true)
     private boolean preordered;
-    @JacksonXmlProperty(localName = "lastmodified",isAttribute = true)
+    @JacksonXmlProperty(localName = "lastmodified", isAttribute = true)
     private String lastModified;
 
     public boolean isOwn() {
@@ -49,7 +50,7 @@ public class OwnerStatus {
     }
 
     public void setOwn(String own) {
-        this.own = Boolean.parseBoolean(own);
+        this.own = BooleanUtils.toBoolean(own, "1", "0");
     }
 
     public boolean isPreviouslyOwned() {
@@ -57,7 +58,7 @@ public class OwnerStatus {
     }
 
     public void setPreviouslyOwned(String previouslyOwned) {
-        this.previouslyOwned = Boolean.parseBoolean(previouslyOwned);
+        this.previouslyOwned = BooleanUtils.toBoolean(previouslyOwned, "1", "0");
     }
 
     public boolean isForTrade() {
@@ -65,7 +66,7 @@ public class OwnerStatus {
     }
 
     public void setForTrade(String forTrade) {
-        this.forTrade = Boolean.parseBoolean(forTrade);
+        this.forTrade = BooleanUtils.toBoolean(forTrade, "1", "0");
     }
 
     public boolean isWant() {
@@ -73,7 +74,7 @@ public class OwnerStatus {
     }
 
     public void setWant(String want) {
-        this.want = Boolean.parseBoolean(want);
+        this.want = BooleanUtils.toBoolean(want, "1", "0");
     }
 
     public boolean isWantToPlay() {
@@ -81,7 +82,7 @@ public class OwnerStatus {
     }
 
     public void setWantToPlay(String wantToPlay) {
-        this.wantToPlay = Boolean.parseBoolean(wantToPlay);
+        this.wantToPlay = BooleanUtils.toBoolean(wantToPlay, "1", "0");
     }
 
     public boolean isWantToBuy() {
@@ -89,7 +90,7 @@ public class OwnerStatus {
     }
 
     public void setWantToBuy(String wantToBuy) {
-        this.wantToBuy = Boolean.parseBoolean(wantToBuy);
+        this.wantToBuy = BooleanUtils.toBoolean(wantToBuy, "1", "0");
     }
 
     public int getWishlist() {
@@ -113,7 +114,7 @@ public class OwnerStatus {
     }
 
     public void setPreordered(String preordered) {
-        this.preordered = Boolean.parseBoolean(preordered);
+        this.preordered = BooleanUtils.toBoolean(preordered, "1", "0");
     }
 
     public String getLastModified() {
