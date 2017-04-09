@@ -20,11 +20,13 @@
 package com.omertron.bgg;
 
 import com.omertron.bgg.enums.FamilyType;
+import com.omertron.bgg.enums.HotItemType;
 import com.omertron.bgg.enums.IncludeExclude;
 import com.omertron.bgg.model.BoardGameExtended;
 import com.omertron.bgg.model.CollectionItem;
 import com.omertron.bgg.model.CollectionItemWrapper;
 import com.omertron.bgg.model.Family;
+import com.omertron.bgg.model.HotListItem;
 import com.omertron.bgg.model.SearchWrapper;
 import com.omertron.bgg.model.UserInfo;
 import java.util.ArrayList;
@@ -249,5 +251,21 @@ public class BggApiTest {
         assertTrue("Not enough search results", result.getTotal() >= 4);
         assertNotNull("No results!", result.getItems());
         assertFalse("No result items", result.getItems().isEmpty());
+    }
+
+    /**
+     * Test of getHotItems method, of class BggApi.
+     *
+     * @throws com.omertron.bgg.BggException
+     */
+    @Test
+    public void testGetHotItems() throws BggException {
+        LOG.info("getHotItems");
+
+        for (HotItemType itemType : HotItemType.values()) {
+            List<HotListItem> result = bggApi.getHotItems(itemType);
+            assertNotNull("Null items returned for " + itemType.toString(), result);
+            assertFalse("No items returned for " + itemType.toString(), result.isEmpty());
+        }
     }
 }

@@ -19,10 +19,12 @@
  */
 package com.omertron.bgg;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.omertron.bgg.apibuilder.BggApiBuilder;
 import com.omertron.bgg.enums.Command;
 import com.omertron.bgg.enums.FamilyType;
+import com.omertron.bgg.enums.HotItemType;
 import com.omertron.bgg.enums.IncludeExclude;
 import com.omertron.bgg.enums.ThingType;
 import com.omertron.bgg.model.BoardGameExtended;
@@ -30,6 +32,8 @@ import com.omertron.bgg.model.BoardGameWrapper;
 import com.omertron.bgg.model.CollectionItemWrapper;
 import com.omertron.bgg.model.Family;
 import com.omertron.bgg.model.FamilyWrapper;
+import com.omertron.bgg.model.GenericListWrapper;
+import com.omertron.bgg.model.HotListItem;
 import com.omertron.bgg.model.SearchWrapper;
 import com.omertron.bgg.model.UserInfo;
 import com.omertron.bgg.tools.HttpTools;
@@ -55,6 +59,15 @@ public class BggApi {
     private static final String BASE_URL = "http://www.boardgamegeek.com/xmlapi2/{command}";
     private static final String LOG_URL = "URL: {}";
 
+    /**
+     * TODO:
+     * <p>
+     * Forum Lists<p>
+     * Forums Threads<p>
+     * Guilds<p>
+     * Plays<p>
+     *
+     */
     public BggApi() {
         this(new SimpleHttpClientBuilder().build());
     }
@@ -228,7 +241,6 @@ public class BggApi {
         }
 
         URL url = builder.buildUrl();
-
         LOG.debug(LOG_URL, url);
 
         String webpage = httpTools.retrieveWebpage(url);
@@ -238,5 +250,30 @@ public class BggApi {
             throw new BggException(ApiExceptionType.MAPPING_FAILED, "Failed to map CollectionInfo", url, ex);
         }
 
+    }
+
+    /**
+     * You can retrieve the list of most active items on the site.
+     *
+     * @param itemType
+     * @return
+     * @throws BggException
+     */
+    public List<HotListItem> getHotItems(HotItemType itemType) throws BggException {
+        URL url = new BggApiBuilder(BASE_URL)
+                .command(Command.HOT)
+                .hotType(itemType)
+                .buildUrl();
+        LOG.debug(LOG_URL, url);
+
+        String webpage = httpTools.retrieveWebpage(url);
+        try {
+            TypeReference tr = new TypeReference<GenericListWrapper<HotListItem>>() {
+            };
+            GenericListWrapper<HotListItem> results = mapper.readValue(webpage, tr);
+            return results.getItems();
+        } catch (IOException ex) {
+            throw new BggException(ApiExceptionType.MAPPING_FAILED, "Failed to map Hot List information", url, ex);
+        }
     }
 }

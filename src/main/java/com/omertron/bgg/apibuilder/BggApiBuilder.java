@@ -22,6 +22,7 @@ package com.omertron.bgg.apibuilder;
 import com.omertron.bgg.enums.Command;
 import com.omertron.bgg.enums.Domain;
 import com.omertron.bgg.enums.FamilyType;
+import com.omertron.bgg.enums.HotItemType;
 import com.omertron.bgg.enums.IncludeExclude;
 import com.omertron.bgg.enums.ThingType;
 import java.io.UnsupportedEncodingException;
@@ -54,9 +55,12 @@ public class BggApiBuilder extends ApiBuilder {
     public BggApiBuilder command(Command command) {
         switch (command) {
             case THING:
-                // Supported
-                break;
             case FAMILY:
+            case USER:
+            case PLAYS:
+            case COLLECTION:
+            case HOT:
+            case SEARCH:
                 // Supported
                 break;
             case FORUMLIST:
@@ -65,22 +69,8 @@ public class BggApiBuilder extends ApiBuilder {
                 throw new ApiException(NOT_SUPPORTED);
             case THREAD:
                 throw new ApiException(NOT_SUPPORTED);
-            case USER:
-                // Supported
-                break;
             case GUILD:
                 throw new ApiException(NOT_SUPPORTED);
-            case PLAYS:
-                // Supported
-                break;
-            case COLLECTION:
-                // Supported
-                break;
-            case HOT:
-                throw new ApiException(NOT_SUPPORTED);
-            case SEARCH:
-                // Supported
-                break;
             default:
                 throw new ApiException(NOT_SUPPORTED);
         }
@@ -184,6 +174,17 @@ public class BggApiBuilder extends ApiBuilder {
      */
     public BggApiBuilder family(FamilyType familyType) {
         super.parameter("type", familyType.toString());
+        return this;
+    }
+
+    /**
+     * Set the hot item list type
+     *
+     * @param hotItemType
+     * @return
+     */
+    public BggApiBuilder hotType(HotItemType hotItemType) {
+        super.parameter("type", hotItemType.toString());
         return this;
     }
 
