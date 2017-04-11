@@ -97,7 +97,7 @@ public class BggApiTest {
     /**
      * Test of getBoardGameInfo method, of class BggApi.
      *
-     * @throws com.omertron.bgg.BggException
+     * @throws BggException Custom exception containing failure code
      */
     @Test
     public void testGetBoardGameInfo() throws BggException {
@@ -125,7 +125,7 @@ public class BggApiTest {
     /**
      * Test of getFamilyItems method, of class BggApi.
      *
-     * @throws com.omertron.bgg.BggException
+     * @throws BggException Custom exception containing failure code
      */
     @Test
     public void testGetFamilyItems() throws BggException {
@@ -145,7 +145,7 @@ public class BggApiTest {
     /**
      * Test of getUserInfo method, of class BggApi.
      *
-     * @throws com.omertron.bgg.BggException
+     * @throws BggException Custom exception containing failure code
      */
     @Test
     public void testGetUserInfo() throws BggException {
@@ -197,7 +197,7 @@ public class BggApiTest {
     /**
      * Test of getCollectionInfo method, of class BggApi.
      *
-     * @throws com.omertron.bgg.BggException
+     * @throws BggException Custom exception containing failure code
      */
     @Test
     public void testGetCollectionInfo() throws BggException {
@@ -240,7 +240,7 @@ public class BggApiTest {
     /**
      * Test of searchBoardGame method, of class BggApi.
      *
-     * @throws com.omertron.bgg.BggException
+     * @throws BggException Custom exception containing failure code
      */
     @Test
     public void testSearchBoardGame() throws BggException {
@@ -256,7 +256,7 @@ public class BggApiTest {
     /**
      * Test of getHotItems method, of class BggApi.
      *
-     * @throws com.omertron.bgg.BggException
+     * @throws BggException Custom exception containing failure code
      */
     @Test
     public void testGetHotItems() throws BggException {
