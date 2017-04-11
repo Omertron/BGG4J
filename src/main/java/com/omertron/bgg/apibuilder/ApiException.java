@@ -20,9 +20,9 @@
 package com.omertron.bgg.apibuilder;
 
 /**
- * Represents an exception which occured executing a remote API method.
+ * Represents an exception which occurred executing a remote API method.
  *
- * @author Jake Wharton <jakewharton@gmail.com>
+ * @author Jake Wharton
  */
 public class ApiException extends RuntimeException {
 

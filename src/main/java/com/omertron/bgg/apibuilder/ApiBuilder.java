@@ -30,11 +30,13 @@ import java.util.Map;
 import org.slf4j.LoggerFactory;
 
 /**
- * Quickly and efficiently assemble URLs which contain both in-URL fields and appended parameters.</p>
+ * Quickly and efficiently assemble URLs which contain both in-URL fields and
+ * appended parameters.<p>
  * <p>
- * Parts of the code for this class are from Nabeel Mukhtar's github-java-sdk library.</p>
+ * Parts of the code for this class are from Nabeel Mukhtar's github-java-sdk
+ * library.</p>
  *
- * @author Jake Wharton <jakewharton@gmail.com>
+ * @author Jake Wharton
  */
 public class ApiBuilder {
 
@@ -217,7 +219,8 @@ public class ApiBuilder {
     /**
      * Build the URL.
      *
-     * @param appendAllParameters Whether to append parameters that were not explicitly defined in the URI.
+     * @param appendAllParameters Whether to append parameters that were not
+     * explicitly defined in the URI.
      * @return String representation of the URL.
      */
     protected URL buildUrl(boolean appendAllParameters) {

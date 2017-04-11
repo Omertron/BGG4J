@@ -46,7 +46,7 @@ import org.slf4j.LoggerFactory;
  * Parts of the code for this class are from Nabeel Mukhtar's github-java-sdk
  * library.</p>
  *
- * @author Jake Wharton <jakewharton@gmail.com>
+ * @author Jake Wharton
  */
 public class ApiService {
 
@@ -421,7 +421,7 @@ public class ApiService {
      * @param is Stream to wrap.
      * @param gzip Whether or not to include a GZIP wrapper.
      * @return Wrapped stream.
-     * @throws IOException
+     * @throws IOException Exception when reading the stream
      */
     protected static InputStream getWrappedInputStream(InputStream is, boolean gzip) throws IOException {
         if (gzip) {

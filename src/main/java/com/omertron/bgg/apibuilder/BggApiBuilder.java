@@ -50,7 +50,7 @@ public class BggApiBuilder extends ApiBuilder {
      * Add the type of request to the URL
      *
      * @param command The request type to use
-     * @return
+     * @return Current instance for builder pattern.
      */
     public BggApiBuilder command(Command command) {
         switch (command) {
@@ -81,8 +81,8 @@ public class BggApiBuilder extends ApiBuilder {
     /**
      * Specifies the id of the thing(s) to retrieve.
      *
-     * @param id
-     * @return
+     * @param id Id
+     * @return Current instance for builder pattern.
      */
     public BggApiBuilder id(Integer id) {
         if (id != null && id > 0) {
@@ -93,10 +93,11 @@ public class BggApiBuilder extends ApiBuilder {
 
     /**
      * Specifies the id of the thing(s) to retrieve.<br>
-     * To request multiple things with a single query, NNN can specify a comma-delimited list of ids.
+     * To request multiple things with a single query, NNN can specify a
+     * comma-delimited list of ids.
      *
-     * @param id
-     * @return
+     * @param id Id
+     * @return Current instance for builder pattern.
      */
     public BggApiBuilder id(String id) {
         if (StringUtils.isNotBlank(id)) {
@@ -106,11 +107,12 @@ public class BggApiBuilder extends ApiBuilder {
     }
 
     /**
-     * Specifies that, regardless of the type of thing asked for by id, the results are filtered by the THINGTYPE(s) specified.<br>
+     * Specifies that, regardless of the type of thing asked for by id, the
+     * results are filtered by the THINGTYPE(s) specified.<br>
      * Multiple THINGTYPEs can be specified.
      *
-     * @param value
-     * @return
+     * @param value Value
+     * @return Current instance for builder pattern.
      */
     public BggApiBuilder thingType(ThingType value) {
         super.parameter("type", value.toString());
@@ -118,11 +120,12 @@ public class BggApiBuilder extends ApiBuilder {
     }
 
     /**
-     * Specifies that, regardless of the type of thing asked for by id, the results are filtered by the THINGTYPE(s) specified.<br>
+     * Specifies that, regardless of the type of thing asked for by id, the
+     * results are filtered by the THINGTYPE(s) specified.<br>
      * Multiple THINGTYPEs can be specified.
      *
-     * @param values
-     * @return
+     * @param values Values
+     * @return Current instance for builder pattern.
      */
     public BggApiBuilder thingType(ThingType... values) {
         if (values != null) {
@@ -132,10 +135,11 @@ public class BggApiBuilder extends ApiBuilder {
     }
 
     /**
-     * Defaults to 1, controls the page of data to see for historical info, comments, and ratings data.
+     * Defaults to 1, controls the page of data to see for historical info,
+     * comments, and ratings data.
      *
-     * @param value
-     * @return
+     * @param value Value
+     * @return Current instance for builder pattern.
      */
     public BggApiBuilder page(int value) {
         if (value <= 1) {
@@ -150,8 +154,8 @@ public class BggApiBuilder extends ApiBuilder {
      *
      * Minimum is 10, maximum is 100
      *
-     * @param value
-     * @return
+     * @param value Value
+     * @return Current instance for builder pattern.
      */
     public BggApiBuilder pageSize(int value) {
         int newValue;
@@ -169,8 +173,8 @@ public class BggApiBuilder extends ApiBuilder {
     /**
      * Set the family type
      *
-     * @param familyType
-     * @return
+     * @param familyType Family Type
+     * @return Current instance for builder pattern.
      */
     public BggApiBuilder family(FamilyType familyType) {
         super.parameter("type", familyType.toString());
@@ -180,8 +184,8 @@ public class BggApiBuilder extends ApiBuilder {
     /**
      * Set the hot item list type
      *
-     * @param hotItemType
-     * @return
+     * @param hotItemType Hot Item Type
+     * @return Current instance for builder pattern.
      */
     public BggApiBuilder hotType(HotItemType hotItemType) {
         super.parameter("type", hotItemType.toString());
@@ -191,10 +195,10 @@ public class BggApiBuilder extends ApiBuilder {
     /**
      * Specifies the user name.
      *
-     * Only one user is requestable at a time.
+     * Only one user can be requested at a time.
      *
-     * @param name
-     * @return
+     * @param name Name
+     * @return Current instance for builder pattern.
      */
     public BggApiBuilder name(String name) {
         super.parameter("name", name);
@@ -208,8 +212,8 @@ public class BggApiBuilder extends ApiBuilder {
      *
      * Valid values are: boardgame, rpg & videogame
      *
-     * @param domain
-     * @return
+     * @param domain Valid values are: boardgame (Default), rpg & videogame
+     * @return Current instance for builder pattern.
      */
     public BggApiBuilder domain(Domain domain) {
         super.parameter("domain", domain.toString());
@@ -219,14 +223,20 @@ public class BggApiBuilder extends ApiBuilder {
     /**
      * Name of the user to request the collection for.
      *
-     * @param username
-     * @return
+     * @param username Username
+     * @return Current instance for builder pattern.
      */
     public BggApiBuilder username(String username) {
         super.parameter("username", username);
         return this;
     }
 
+    /**
+     * The query to use for any searches
+     *
+     * @param query Query
+     * @return Current instance for builder pattern.
+     */
     public BggApiBuilder query(String query) {
         try {
             super.parameter("query", URLEncoder.encode(query, "UTF-8"));
@@ -237,6 +247,12 @@ public class BggApiBuilder extends ApiBuilder {
         return this;
     }
 
+    /**
+     * Append a single include
+     *
+     * @param value Value
+     * @return
+     */
     public BggApiBuilder include(IncludeExclude value) {
         if (value != null) {
             super.parameter(value.toString(), 1);
@@ -244,6 +260,12 @@ public class BggApiBuilder extends ApiBuilder {
         return this;
     }
 
+    /**
+     * Append a list of includes
+     *
+     * @param values Values
+     * @return Current instance for builder pattern.
+     */
     public BggApiBuilder include(IncludeExclude... values) {
         if (values != null) {
             for (IncludeExclude ie : values) {
@@ -253,6 +275,12 @@ public class BggApiBuilder extends ApiBuilder {
         return this;
     }
 
+    /**
+     * Append a list of includes
+     *
+     * @param values Values
+     * @return Current instance for builder pattern.
+     */
     public BggApiBuilder include(List<IncludeExclude> values) {
         if (values != null) {
             for (IncludeExclude ie : values) {
@@ -262,6 +290,12 @@ public class BggApiBuilder extends ApiBuilder {
         return this;
     }
 
+    /**
+     * Append a single exclude
+     *
+     * @param value Value
+     * @return Current instance for builder pattern.
+     */
     public BggApiBuilder exclude(IncludeExclude value) {
         if (value != null) {
             super.parameter(value.toString(), 0);
@@ -269,6 +303,12 @@ public class BggApiBuilder extends ApiBuilder {
         return this;
     }
 
+    /**
+     * Append a list of excludes
+     *
+     * @param values Values
+     * @return Current instance for builder pattern.
+     */
     public BggApiBuilder exclude(IncludeExclude... values) {
         if (values != null) {
             for (IncludeExclude ie : values) {
@@ -278,6 +318,12 @@ public class BggApiBuilder extends ApiBuilder {
         return this;
     }
 
+    /**
+     * Append the exclude list
+     *
+     * @param values Values
+     * @return Current instance for builder pattern.
+     */
     public BggApiBuilder exclude(List<IncludeExclude> values) {
         if (values != null) {
             for (IncludeExclude ie : values) {
@@ -287,11 +333,23 @@ public class BggApiBuilder extends ApiBuilder {
         return this;
     }
 
+    /**
+     * Create the URL from the builder
+     *
+     * @return URL
+     */
     @Override
     public URL buildUrl() {
         return super.buildUrl();
     }
 
+    /**
+     * Create the URL from the builder
+     *
+     * @param appendAllParameters Append the extra parameters (likely to always
+     * be true)
+     * @return URL
+     */
     @Override
     public URL buildUrl(boolean appendAllParameters) {
         return super.buildUrl(appendAllParameters);
