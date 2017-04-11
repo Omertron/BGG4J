@@ -41,7 +41,7 @@ public enum IncludeExclude {
     /**
      * Filter for items that have been commented.<br>
      * Used in: Collection<br>
-     * Use: Include & Exclude
+     * Use: Include and Exclude
      */
     COMMENT,
     /**
@@ -55,7 +55,7 @@ public enum IncludeExclude {
     /**
      * Limit results to items that match the SEARCH_QUERY exactly.<br>
      * Used in: Search<br>
-     * Use: Include & Exclude
+     * Use: Include and Exclude
      */
     EXACT,
     /**
@@ -68,7 +68,7 @@ public enum IncludeExclude {
      * Filter on whether there is a comment in the Has Parts field of the
      * item.<br>
      * Used in: Collection<br>
-     * Use: Include & Exclude
+     * Use: Include and Exclude
      */
     HASPARTS,
     /**
@@ -93,31 +93,31 @@ public enum IncludeExclude {
     /**
      * Filter for owned games.<br>
      * Used in: Collection<br>
-     * Use: Include & Exclude
+     * Use: Include and Exclude
      */
     OWN,
     /**
      * Filter for whether an item has been played.<br>
      * Used in: Collection<br>
-     * Use: Include & Exclude
+     * Use: Include and Exclude
      */
     PLAYED,
     /**
      * Filter for pre-ordered games.<br>
      * Used in: Collection<br>
-     * Use: Include & Exclude
+     * Use: Include and Exclude
      */
     PREORDERED,
     /**
      * Filter for games marked previously owned.<br>
      * Used in: Collection<br>
-     * Use: Include & Exclude
+     * Use: Include and Exclude
      */
     PREVOWNED,
     /**
      * Filter for whether an item has been rated.<br>
      * Used in: Collection<br>
-     * Use: Include & Exclude
+     * Use: Include and Exclude
      */
     RATED,
     /**
@@ -154,7 +154,7 @@ public enum IncludeExclude {
     /**
      * Filter for items marked for trade.<br>
      * Used in: Collection<br>
-     * Use: Include & Exclude
+     * Use: Include and Exclude
      */
     TRADE,
     /**
@@ -178,32 +178,32 @@ public enum IncludeExclude {
     /**
      * Filter for items wanted in trade.<br>
      * Used in: Collection<br>
-     * Use: Include & Exclude
+     * Use: Include and Exclude
      */
     WANT,
     /**
      * Filter on whether there is a comment in the Wants Parts field of the
      * item.<br>
      * Used in: Collection<br>
-     * Use: Include & Exclude
+     * Use: Include and Exclude
      */
     WANTPARTS,
     /**
      * Filter for items marked as wanting to buy.<br>
      * Used in: Collection<br>
-     * Use: Include & Exclude
+     * Use: Include and Exclude
      */
     WANTTOBUY,
     /**
      * Filter for items marked as wanting to play.<br>
      * Used in: Collection<br>
-     * Use: Include & Exclude
+     * Use: Include and Exclude
      */
     WANTTOPLAY,
     /**
      * Filter for items on the wishlist.<br>
      * Used in: Collection<br>
-     * Use: Include & Exclude
+     * Use: Include and Exclude
      */
     WISHLIST;
 

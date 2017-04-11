@@ -67,7 +67,7 @@ public class ThingName extends AbstractXmlMapping {
     /**
      * This is needed to handle the JacksonXmlText
      *
-     * @param text
+     * @param text Text
      */
     public void setText(String text) {
         this.value = text;

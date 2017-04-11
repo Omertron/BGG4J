@@ -210,9 +210,9 @@ public class BggApiBuilder extends ApiBuilder {
      *
      * The DOMAIN default is boardgame
      *
-     * Valid values are: boardgame, rpg & videogame
+     * Valid values are: boardgame, rpg and videogame
      *
-     * @param domain Valid values are: boardgame (Default), rpg & videogame
+     * @param domain Valid values are: boardgame (Default), rpg and videogame
      * @return Current instance for builder pattern.
      */
     public BggApiBuilder domain(Domain domain) {
@@ -251,7 +251,7 @@ public class BggApiBuilder extends ApiBuilder {
      * Append a single include
      *
      * @param value Value
-     * @return
+     * @return Current instance for builder pattern.
      */
     public BggApiBuilder include(IncludeExclude value) {
         if (value != null) {

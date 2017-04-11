@@ -32,7 +32,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Quickly and efficiently assemble URLs which contain both in-URL fields and
  * appended parameters.<p>
- * <p>
+ *
  * Parts of the code for this class are from Nabeel Mukhtar's github-java-sdk
  * library.</p>
  *
