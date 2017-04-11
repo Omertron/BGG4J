@@ -29,7 +29,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Abstract class to handle any unknown properties by outputting a log message
  *
- * @author stuart.boston
+ * @author Omertron
  */
 public abstract class AbstractXmlMapping implements Serializable {
 

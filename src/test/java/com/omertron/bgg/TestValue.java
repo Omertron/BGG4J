@@ -27,7 +27,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 /**
  * Simple test class to hold associated values during testing
  *
- * @author stuar
+ * @author Omertron
  */
 public class TestValue {
 

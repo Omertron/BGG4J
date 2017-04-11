@@ -41,7 +41,7 @@ import org.yamj.api.common.http.DigestedResponseReader;
 /**
  * HTTP tools to aid in processing web requests
  *
- * @author Stuart.Boston
+ * @author Omertron
  */
 public class HttpTools {
 

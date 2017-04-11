@@ -26,7 +26,7 @@ import com.omertron.bgg.enums.PrimaryAlternative;
 
 /**
  *
- * @author stuar
+ * @author Omertron
  */
 @SuppressWarnings("unused")
 public class ThingName extends AbstractXmlMapping {

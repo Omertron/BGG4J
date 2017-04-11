@@ -29,7 +29,7 @@ import java.util.List;
 
 /**
  *
- * @author stuar
+ * @author Omertron
  */
 @JacksonXmlRootElement(localName = "item")
 @JsonIgnoreProperties("poll")

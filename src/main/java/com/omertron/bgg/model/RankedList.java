@@ -23,7 +23,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 /**
  *
- * @author stuar
+ * @author Omertron
  */
 public class RankedList extends AbstractXmlMapping {
 
