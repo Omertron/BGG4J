@@ -322,7 +322,7 @@
                                 <report>summary</report>
                                 <report>dependency-management</report>
                                 <report>dependencies</report>
-                                <report>licenses</report>
+                                <report>license</report>
                                 <report>modules</report>
                             </reports>
                         </plugin>
