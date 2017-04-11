@@ -31,7 +31,8 @@ public enum Command {
      */
     THING,
     /**
-     * In the BGG database, more abstract or esoteric concepts are represented by something called a family.
+     * In the BGG database, more abstract or esoteric concepts are represented
+     * by something called a family.
      */
     FAMILY,
     /**
@@ -45,7 +46,8 @@ public enum Command {
     /**
      * Request forum threads by thread id.
      *
-     * A thread consists of some basic information about the thread and a series of articles or individual postings.
+     * A thread consists of some basic information about the thread and a series
+     * of articles or individual postings.
      */
     THREAD,
     /**
@@ -76,8 +78,8 @@ public enum Command {
     /**
      * Convert a string into an Enum type
      *
-     * @param source
-     * @return
+     * @param source String representation of the enum to convert
+     * @return The enum that matches the source
      * @throws IllegalArgumentException If type is not recognised
      *
      */
@@ -91,7 +93,7 @@ public enum Command {
         }
         throw new IllegalArgumentException("Command must not be null");
     }
-    
+
     @Override
     public String toString() {
         return this.name().toLowerCase();

@@ -39,8 +39,8 @@ public abstract class AbstractXmlMapping implements Serializable {
     /**
      * Handle unknown properties and print a message
      *
-     * @param key
-     * @param value
+     * @param key The property that is missing
+     * @param value The currently assigned value for the key
      */
     @JsonAnySetter
     protected void handleUnknown(String key, Object value) {

@@ -34,10 +34,9 @@ public enum HotItemType {
     /**
      * Convert a string into an Enum type
      *
-     * @param source
-     * @return
+     * @param source String representation of the enum to convert
+     * @return The enum that matches the source
      * @throws IllegalArgumentException If type is not recognised
-     *
      */
     public static HotItemType fromString(String source) {
         if (StringUtils.isNotBlank(source)) {
@@ -49,7 +48,7 @@ public enum HotItemType {
         }
         throw new IllegalArgumentException("HotItem must not be null");
     }
-    
+
     @Override
     public String toString() {
         return this.name().toLowerCase();

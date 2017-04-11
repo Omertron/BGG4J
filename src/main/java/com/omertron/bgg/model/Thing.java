@@ -37,7 +37,7 @@ public class Thing extends AbstractXmlMapping {
     /**
      * Get the game ID
      *
-     * @return
+     * @return The ID
      */
     public int getId() {
         return id;
@@ -50,7 +50,7 @@ public class Thing extends AbstractXmlMapping {
     /**
      * Get all the names associated with the Thing
      *
-     * @return
+     * @return List of the names associated with the thing
      */
     public List<ThingName> getNames() {
         return names;
@@ -59,8 +59,8 @@ public class Thing extends AbstractXmlMapping {
     /**
      * Return the name for the Thing.
      *
-     * @return the primary name if available, then default to the first alternative name found. If no names are available, null is
-     * returned
+     * @return the primary name if available, then default to the first
+     * alternative name found. If no names are available, null is returned
      */
     public String getName() {
         String name = getPrimaryName();
@@ -97,7 +97,7 @@ public class Thing extends AbstractXmlMapping {
     /**
      * Get a list of the alternative names
      *
-     * @return
+     * @return List of the alternative names for the thing
      */
     public List<String> getAlternativeNames() {
         List<String> results = new ArrayList<>();
@@ -114,6 +114,11 @@ public class Thing extends AbstractXmlMapping {
         this.names.add(name);
     }
 
+    /**
+     * Get the type of the thing
+     *
+     * @return String representation of the thing type
+     */
     public String getType() {
         return type;
     }
@@ -122,6 +127,10 @@ public class Thing extends AbstractXmlMapping {
         this.type = type;
     }
 
+    /**
+     * The year the thing was published
+     * @return Year as integer
+     */
     public Integer getYearPublished() {
         return yearPublished;
     }

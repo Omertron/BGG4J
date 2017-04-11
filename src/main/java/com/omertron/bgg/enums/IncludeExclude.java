@@ -45,7 +45,8 @@ public enum IncludeExclude {
      */
     COMMENT,
     /**
-     * Returns all commnts about the item. Also includes ratings when commented.<br>
+     * Returns all commnts about the item. Also includes ratings when
+     * commented.<br>
      * Used in: Items<br>
      * Use: Include
      *
@@ -64,7 +65,8 @@ public enum IncludeExclude {
      */
     GUILDS,
     /**
-     * Filter on whether there is a comment in the Has Parts field of the item.<br>
+     * Filter on whether there is a comment in the Has Parts field of the
+     * item.<br>
      * Used in: Collection<br>
      * Use: Include & Exclude
      */
@@ -120,17 +122,19 @@ public enum IncludeExclude {
     RATED,
     /**
      * Returns all ratings for the item. Also includes comments when rated.<br>
-     * The ratingcomments and comments parameters cannot be used together; comments parameter takes precedence if both are
-     * specified.<br>
-     * Ratings are sorted in descending rating value, based on the highest rating they have assigned to that item (each item in the
-     * collection can have a different rating).<br>
+     * The ratingcomments and comments parameters cannot be used together;
+     * comments parameter takes precedence if both are specified.<br>
+     * Ratings are sorted in descending rating value, based on the highest
+     * rating they have assigned to that item (each item in the collection can
+     * have a different rating).<br>
      * Used in: Items<br>
      * Use: Include
      *
      */
     RATINGCOMMENTS,
     /**
-     * Filter to show private collection info. Only works when viewing your own collection and you are logged in.<br>
+     * Filter to show private collection info. Only works when viewing your own
+     * collection and you are logged in.<br>
      * Used in: Collection<br>
      * Use: Include
      */
@@ -178,7 +182,8 @@ public enum IncludeExclude {
      */
     WANT,
     /**
-     * Filter on whether there is a comment in the Wants Parts field of the item.<br>
+     * Filter on whether there is a comment in the Wants Parts field of the
+     * item.<br>
      * Used in: Collection<br>
      * Use: Include & Exclude
      */
@@ -205,10 +210,9 @@ public enum IncludeExclude {
     /**
      * Convert a string into an Enum type
      *
-     * @param source
-     * @return
+     * @param source String representation of the enum to convert
+     * @return The enum that matches the source
      * @throws IllegalArgumentException If type is not recognised
-     *
      */
     public static IncludeExclude fromString(String source) {
         if (StringUtils.isNotBlank(source)) {

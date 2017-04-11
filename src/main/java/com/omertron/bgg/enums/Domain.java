@@ -33,8 +33,8 @@ public enum Domain {
     /**
      * Convert a string into an Enum type
      *
-     * @param source
-     * @return
+     * @param source String representation of the enum to convert
+     * @return The enum that matches the source
      * @throws IllegalArgumentException If type is not recognised
      *
      */
