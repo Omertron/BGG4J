@@ -59,7 +59,7 @@ public class BggApi {
     private static final String BASE_URL = "http://www.boardgamegeek.com/xmlapi2/{command}";
     private static final String LOG_URL = "URL: {}";
 
-    /**
+    /*
      * TODO:
      * <p>
      * Forum Lists<p>
@@ -68,10 +68,20 @@ public class BggApi {
      * Plays<p>
      *
      */
+    /**
+     * BoardGameGeek API wrapper.
+     *
+     * This method will use a default HttpClient
+     */
     public BggApi() {
         this(new SimpleHttpClientBuilder().build());
     }
 
+    /**
+     * BoardGameGeek API wrapper.
+     *
+     * @param httpClient Use the supplied HttpClient for web access
+     */
     public BggApi(HttpClient httpClient) {
         httpTools = new HttpTools(httpClient);
         mapper = new XmlMapper();
@@ -80,9 +90,9 @@ public class BggApi {
     /**
      * Get information on a board game
      *
-     * @param id
-     * @return
-     * @throws BggException
+     * @param id The BGG ID number
+     * @return List of boardgames that match the supplied ID
+     * @throws BggException Custom exception containing failure code
      */
     public List<BoardGameExtended> getBoardGameInfo(int id) throws BggException {
         List<IncludeExclude> includes = new ArrayList<>();
@@ -96,12 +106,12 @@ public class BggApi {
     /**
      * Get information on a "thing" (board game, expansions or accessories)
      *
-     * @param type
-     * @param id
-     * @param includes
-     * @param excludes
-     * @return
-     * @throws BggException
+     * @param type The type of the "thing" to get information about
+     * @param id The ID of the thing
+     * @param includes List of additional information to include
+     * @param excludes List of items to Exclude from the query
+     * @return List of boardgames that match the query
+     * @throws BggException Custom exception containing failure code
      */
     public List<BoardGameExtended> getBoardGameInfo(ThingType type, int id, List<IncludeExclude> includes, List<IncludeExclude> excludes) throws BggException {
         URL url = new BggApiBuilder(BASE_URL)
@@ -133,10 +143,10 @@ public class BggApi {
     /**
      * Get the family information on a particular family
      *
-     * @param id
-     * @param familyType
-     * @return
-     * @throws BggException
+     * @param id The BGG ID for the family item
+     * @param familyType The type of family item to get
+     * @return List of the family items
+     * @throws BggException Custom exception containing failure code
      */
     public List<Family> getFamilyItems(int id, FamilyType familyType) throws BggException {
         URL url = new BggApiBuilder(BASE_URL)
@@ -159,9 +169,9 @@ public class BggApi {
     /**
      * Get information on a user
      *
-     * @param username
-     * @return
-     * @throws BggException
+     * @param username The username of the person to retrieve information on
+     * @return Information on the user
+     * @throws BggException Custom exception containing failure code
      */
     public UserInfo getUserInfo(String username) throws BggException {
         URL url = new BggApiBuilder(BASE_URL)
@@ -190,8 +200,8 @@ public class BggApi {
      * @param id Get information on a specific game, can be null or zero
      * @param include Flags to include items in the search
      * @param exclude Flags to exclude items in the search
-     * @return
-     * @throws BggException
+     * @return A wrapper class with the list of collection items
+     * @throws BggException Custom exception containing failure code
      */
     public CollectionItemWrapper getCollectionInfo(String username, String id, List<IncludeExclude> include, List<IncludeExclude> exclude) throws BggException {
         URL url = new BggApiBuilder(BASE_URL)
@@ -216,13 +226,13 @@ public class BggApi {
     }
 
     /**
-     * Search NGG for the game name
+     * Search BGG for the game name
      *
-     * @param query
-     * @param exact
-     * @param includeExpansions
-     * @return
-     * @throws BggException
+     * @param query The item query to search for
+     * @param exact Search for the exact query
+     * @param includeExpansions Include expansions in the search
+     * @return A wrapper class with the search responses
+     * @throws BggException Custom exception containing failure code
      */
     public SearchWrapper searchBoardGame(String query, boolean exact, boolean includeExpansions) throws BggException {
         BggApiBuilder builder = new BggApiBuilder(BASE_URL)
@@ -255,14 +265,14 @@ public class BggApi {
     /**
      * You can retrieve the list of most active items on the site.
      *
-     * @param itemType
-     * @return
-     * @throws BggException
+     * @param itemType The Item type to get the hot list for.
+     * @return The list of items for the Hot List
+     * @throws BggException Custom exception containing failure code
      */
     public List<HotListItem> getHotItems(HotItemType itemType) throws BggException {
         URL url = new BggApiBuilder(BASE_URL)
                 .command(Command.HOT)
-                .hotType(itemType)
+                .hotType(itemType == null ? HotItemType.BOARDGAME : itemType)
                 .buildUrl();
         LOG.debug(LOG_URL, url);
 

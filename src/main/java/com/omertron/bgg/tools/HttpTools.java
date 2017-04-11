@@ -54,6 +54,12 @@ public class HttpTools {
 
     private static final String TRY_AGAIN = "Please try again later for access";
 
+    /**
+     * Provides a set of tools to the API
+     *
+     * @param httpClient Pre-configured HttpClient with any necessary settings
+     * (e.g. proxy) configured.
+     */
     public HttpTools(HttpClient httpClient) {
         this.httpClient = httpClient;
     }
@@ -61,9 +67,9 @@ public class HttpTools {
     /**
      * Get the web data from BGG, allowing for the retry time
      *
-     * @param url
-     * @return
-     * @throws com.omertron.bgg.BggException
+     * @param url The URL to read the data from
+     * @return A string object with the web data
+     * @throws BggException Custom exception containing failure code
      */
     public String retrieveWebpage(URL url) throws BggException {
         String webpage = getRequest(url);
@@ -86,7 +92,7 @@ public class HttpTools {
      *
      * @param url URL to use in the request
      * @return String content
-     * @throws BggException
+     * @throws BggException Custom exception containing failure code
      */
     public String getRequest(final URL url) throws BggException {
         try {
@@ -114,12 +120,12 @@ public class HttpTools {
     /**
      * Sleep for a period of time
      *
-     * @param multiplier
+     * @param multiplier The quantity of the delay
      */
     private void delay(long multiplier) {
         try {
             // Wait for the timeout to finish
-            Thread.sleep(TimeUnit.SECONDS.toMillis(RETRY_DELAY * multiplier));
+            Thread.sleep(TimeUnit.SECONDS.toMillis(RETRY_DELAY * Math.max(1, multiplier)));
         } catch (InterruptedException ex) {
             // Doesn't matter if we're interrupted
         }
@@ -130,7 +136,7 @@ public class HttpTools {
      *
      * @param url URL to use in the request
      * @return String content
-     * @throws BggException
+     * @throws BggException Custom exception containing failure code
      */
     public String deleteRequest(final URL url) throws BggException {
         try {
@@ -147,7 +153,7 @@ public class HttpTools {
      * @param url URL to use in the request
      * @param jsonBody Body to use in the request
      * @return String content
-     * @throws BggException
+     * @throws BggException Custom exception containing failure code
      */
     public String postRequest(final URL url, final String jsonBody) throws BggException {
         try {
@@ -169,7 +175,7 @@ public class HttpTools {
      * @param response DigestedResponse to process
      * @param url URL for notification purposes
      * @return String content
-     * @throws BggException
+     * @throws BggException Custom exception containing failure code
      */
     private String validateResponse(final DigestedResponse response, final URL url) throws BggException {
         if (response.getStatusCode() == 0) {
