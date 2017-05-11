@@ -65,7 +65,6 @@ public class BggApi {
      * Forum Lists<p>
      * Forums Threads<p>
      * Guilds<p>
-     * Plays<p>
      *
      */
     /**
@@ -200,19 +199,29 @@ public class BggApi {
      * @param id Get information on a specific game, can be null or zero
      * @param include Flags to include items in the search
      * @param exclude Flags to exclude items in the search
+     * @param includeExpansions
      * @return A wrapper class with the list of collection items
      * @throws BggException Custom exception containing failure code
      */
-    public CollectionItemWrapper getCollectionInfo(String username, String id, List<IncludeExclude> include, List<IncludeExclude> exclude) throws BggException {
-        URL url = new BggApiBuilder(BASE_URL)
+    public CollectionItemWrapper getCollectionInfo(String username,
+            String id,
+            List<IncludeExclude> include,
+            List<IncludeExclude> exclude,
+            boolean includeExpansions) throws BggException {
+        BggApiBuilder builder = new BggApiBuilder(BASE_URL)
                 .command(Command.COLLECTION)
                 .username(username)
                 .id(id)
                 // Add the includes 
                 .include(include)
                 // Add the excludes
-                .exclude(exclude)
-                .buildUrl();
+                .exclude(exclude);
+
+        if (!includeExpansions) {
+            builder.subType(ThingType.BOARDGAMEEXPANSION);
+        }
+
+        URL url = builder.buildUrl();
 
         LOG.debug(LOG_URL, url);
 
@@ -285,5 +294,14 @@ public class BggApi {
         } catch (IOException ex) {
             throw new BggException(ApiExceptionType.MAPPING_FAILED, "Failed to map Hot List information", url, ex);
         }
+    }
+
+    public void getPlays(String username, int bggId, Command type, String minDate, String maxDate, ThingType subtype, int page) throws BggException {
+        URL url = new BggApiBuilder(BASE_URL)
+                .command(Command.PLAYS)
+                .buildUrl();
+        LOG.debug(LOG_URL, url);
+
+        String webpage = httpTools.retrieveWebpage(url);
     }
 }

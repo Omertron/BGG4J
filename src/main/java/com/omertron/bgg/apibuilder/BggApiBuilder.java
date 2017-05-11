@@ -93,8 +93,7 @@ public class BggApiBuilder extends ApiBuilder {
 
     /**
      * Specifies the id of the thing(s) to retrieve.<br>
-     * To request multiple things with a single query, NNN can specify a
-     * comma-delimited list of ids.
+     * To request multiple things with a single query, NNN can specify a comma-delimited list of ids.
      *
      * @param id Id
      * @return Current instance for builder pattern.
@@ -107,8 +106,7 @@ public class BggApiBuilder extends ApiBuilder {
     }
 
     /**
-     * Specifies that, regardless of the type of thing asked for by id, the
-     * results are filtered by the THINGTYPE(s) specified.<br>
+     * Specifies that, regardless of the type of thing asked for by id, the results are filtered by the THINGTYPE(s) specified.<br>
      * Multiple THINGTYPEs can be specified.
      *
      * @param value Value
@@ -120,8 +118,7 @@ public class BggApiBuilder extends ApiBuilder {
     }
 
     /**
-     * Specifies that, regardless of the type of thing asked for by id, the
-     * results are filtered by the THINGTYPE(s) specified.<br>
+     * Specifies that, regardless of the type of thing asked for by id, the results are filtered by the THINGTYPE(s) specified.<br>
      * Multiple THINGTYPEs can be specified.
      *
      * @param values Values
@@ -135,8 +132,7 @@ public class BggApiBuilder extends ApiBuilder {
     }
 
     /**
-     * Defaults to 1, controls the page of data to see for historical info,
-     * comments, and ratings data.
+     * Defaults to 1, controls the page of data to see for historical info, comments, and ratings data.
      *
      * @param value Value
      * @return Current instance for builder pattern.
@@ -167,6 +163,30 @@ public class BggApiBuilder extends ApiBuilder {
             newValue = value;
         }
         super.parameter("pagesize", newValue);
+        return this;
+    }
+
+    /**
+     * Specifies which collection you want to retrieve.<p>
+     * TYPE may be boardgame, boardgameexpansion, boardgameaccessory, rpgitem, rpgissue, or videogame<p>
+     * The default is boardgame
+     *
+     * @param subType
+     * @return
+     */
+    public BggApiBuilder subType(ThingType subType) {
+        super.parameter("subtype", subType.toString());
+        return this;
+    }
+
+    /**
+     * Specifies which subtype you want to exclude from the results.
+     *
+     * @param subType
+     * @return
+     */
+    public BggApiBuilder excludeSubType(ThingType subType) {
+        super.parameter("excludesubtype", subType.toString());
         return this;
     }
 
@@ -326,9 +346,9 @@ public class BggApiBuilder extends ApiBuilder {
      */
     public BggApiBuilder exclude(List<IncludeExclude> values) {
         if (values != null) {
-            for (IncludeExclude ie : values) {
+            values.forEach((ie) -> {
                 super.parameter(ie.toString(), 0);
-            }
+            });
         }
         return this;
     }
@@ -346,8 +366,7 @@ public class BggApiBuilder extends ApiBuilder {
     /**
      * Create the URL from the builder
      *
-     * @param appendAllParameters Append the extra parameters (likely to always
-     * be true)
+     * @param appendAllParameters Append the extra parameters (likely to always be true)
      * @return URL
      */
     @Override

@@ -181,7 +181,7 @@ public class BggApiTest {
 
         includes.add(IncludeExclude.STATS);
 
-        CollectionItemWrapper result = bggApi.getCollectionInfo("omertron", "124361,142451,159675", includes, excludes);
+        CollectionItemWrapper result = bggApi.getCollectionInfo("omertron", "124361,142451,159675", includes, excludes, false);
 
         LOG.info("Found {} results", result.getTotalItems());
 
@@ -209,18 +209,8 @@ public class BggApiTest {
             List<IncludeExclude> excludes = new ArrayList<>();
 
             includes.add(IncludeExclude.OWN);
-//        includes.add(IncludeExclude.PLAYED);
-//        includes.add(IncludeExclude.HASPARTS);
-//        includes.add(IncludeExclude.PREORDERED);
-//        includes.add(IncludeExclude.PREVOWNED);
-//        includes.add(IncludeExclude.TRADE);
-//        includes.add(IncludeExclude.WANT);
-//        includes.add(IncludeExclude.WANTPARTS);
-//        includes.add(IncludeExclude.WANTTOBUY);
-//        includes.add(IncludeExclude.WANTTOPLAY);
-//        includes.add(IncludeExclude.WISHLIST);
-
             includes.add(IncludeExclude.COMMENT);
+
             if (test.containsIgnore("MEMORY")) {
                 LOG.info("Stats, Rated and version skipped due to memory issues");
             } else {
@@ -229,11 +219,46 @@ public class BggApiTest {
                 includes.add(IncludeExclude.VERSION);
             }
 
-            CollectionItemWrapper result = bggApi.getCollectionInfo(test.getUsername(), null, includes, excludes);
+            // Get collection with no expansions
+            CollectionItemWrapper result = bggApi.getCollectionInfo(test.getUsername(), null, includes, excludes, false);
 
             assertTrue("No collection found", result.getTotalItems() > 0);
             assertNotNull("Empty collection", result.getItems());
             assertFalse("No collection items found", result.getItems().isEmpty());
+        }
+    }
+
+    /**
+     * Test of getCollectionInfo method, of class BggApi.
+     *
+     * @throws BggException Custom exception containing failure code
+     */
+    @Test
+    public void testGetCollectionInfoExpansions() throws BggException {
+        LOG.info("getCollectionInfo - Expansions");
+
+        List<IncludeExclude> includes = new ArrayList<>();
+        List<IncludeExclude> excludes = new ArrayList<>();
+
+        includes.add(IncludeExclude.OWN);
+
+        for (TestValue test : USERNAMES) {
+            if ("omertron".equalsIgnoreCase(test.getUsername())) {
+                LOG.info("{}", test.toString());
+            } else {
+                LOG.info("Skipping: {}", test.getUsername());
+                continue;
+            }
+            // Get collection with NO expansions
+            CollectionItemWrapper result = bggApi.getCollectionInfo(test.getUsername(), null, includes, excludes, false);
+            int collSize = result.getTotalItems();
+
+            // Get collection WITH expansions
+            result = bggApi.getCollectionInfo(test.getUsername(), null, includes, excludes, true);
+
+            LOG.info("Size 1: {}, Size 2: {}", collSize, result.getTotalItems());
+
+            assertTrue("Same collection size! Should have more with expansions", collSize != result.getTotalItems());
         }
     }
 
