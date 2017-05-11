@@ -251,14 +251,14 @@ public class BggApiTest {
             }
             // Get collection with NO expansions
             CollectionItemWrapper result = bggApi.getCollectionInfo(test.getUsername(), null, includes, excludes, false);
-            int collSize = result.getTotalItems();
+            int noExpSize = result.getTotalItems();
 
             // Get collection WITH expansions
             result = bggApi.getCollectionInfo(test.getUsername(), null, includes, excludes, true);
 
-            LOG.info("Size 1: {}, Size 2: {}", collSize, result.getTotalItems());
+            LOG.info("No Expansions: {}, With Expansions: {}", noExpSize, result.getTotalItems());
 
-            assertTrue("Same collection size! Should have more with expansions", collSize != result.getTotalItems());
+            assertTrue("Same collection size! Should have more with expansions", noExpSize < result.getTotalItems());
         }
     }
 

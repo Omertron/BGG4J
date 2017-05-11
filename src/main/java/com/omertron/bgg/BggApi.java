@@ -217,8 +217,11 @@ public class BggApi {
                 // Add the excludes
                 .exclude(exclude);
 
-        if (!includeExpansions) {
+        if (includeExpansions) {
+            // Not strictly necessary as this is a default.
             builder.subType(ThingType.BOARDGAMEEXPANSION);
+        } else {
+            builder.excludeSubType(ThingType.BOARDGAMEEXPANSION);
         }
 
         URL url = builder.buildUrl();
