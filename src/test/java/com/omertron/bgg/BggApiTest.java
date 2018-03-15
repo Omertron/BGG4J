@@ -220,7 +220,7 @@ public class BggApiTest {
             }
 
             // Get collection with no expansions
-            CollectionItemWrapper result = bggApi.getCollectionInfo(test.getUsername(), null, includes, excludes, false);
+            CollectionItemWrapper result = bggApi.getCollectionInfo(test.getUsername(), "", includes, excludes, false);
 
             assertTrue("No collection found", result.getTotalItems() > 0);
             assertNotNull("Empty collection", result.getItems());
@@ -250,11 +250,11 @@ public class BggApiTest {
                 continue;
             }
             // Get collection with NO expansions
-            CollectionItemWrapper result = bggApi.getCollectionInfo(test.getUsername(), null, includes, excludes, false);
+            CollectionItemWrapper result = bggApi.getCollectionInfo(test.getUsername(), "", includes, excludes, false);
             int noExpSize = result.getTotalItems();
 
             // Get collection WITH expansions
-            result = bggApi.getCollectionInfo(test.getUsername(), null, includes, excludes, true);
+            result = bggApi.getCollectionInfo(test.getUsername(), "", includes, excludes, true);
 
             LOG.info("No Expansions: {}, With Expansions: {}", noExpSize, result.getTotalItems());
 

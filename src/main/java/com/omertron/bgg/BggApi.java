@@ -203,6 +203,31 @@ public class BggApi {
      * @return A wrapper class with the list of collection items
      * @throws BggException Custom exception containing failure code
      */
+    public CollectionItemWrapper getCollectionInfo(String username, Integer id, List<IncludeExclude> include,
+            List<IncludeExclude> exclude,
+            boolean includeExpansions) throws BggException {
+
+        String idString;
+        if (id != null) {
+            idString = id.toString();
+        } else {
+            idString = null;
+        }
+
+        return getCollectionInfo(username, idString, include, exclude, includeExpansions);
+    }
+
+    /**
+     * Get information on a users collection
+     *
+     * @param username The user to get the collection of
+     * @param id Get information on a specific game, can be null or zero
+     * @param include Flags to include items in the search
+     * @param exclude Flags to exclude items in the search
+     * @param includeExpansions
+     * @return A wrapper class with the list of collection items
+     * @throws BggException Custom exception containing failure code
+     */
     public CollectionItemWrapper getCollectionInfo(String username,
             String id,
             List<IncludeExclude> include,
