@@ -242,10 +242,7 @@ public class BggApi {
                 // Add the excludes
                 .exclude(exclude);
 
-        if (includeExpansions) {
-            // Not strictly necessary as this is a default.
-            builder.subType(ThingType.BOARDGAMEEXPANSION);
-        } else {
+        if (!includeExpansions) {
             builder.excludeSubType(ThingType.BOARDGAMEEXPANSION);
         }
 
