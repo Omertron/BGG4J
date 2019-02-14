@@ -68,6 +68,7 @@ public class BggApiTest {
         USERNAMES.add(tv);
         tv = new TestValue("chaddyboy_2000", 4994);
         tv.addIgnore("MEMORY");
+        tv.addIgnore("hot");
         USERNAMES.add(tv);
 
         tv = new TestValue("Dlthorpe", 685930);
@@ -288,6 +289,10 @@ public class BggApiTest {
         LOG.info("getHotItems");
 
         for (HotItemType itemType : HotItemType.values()) {
+            if (itemType == HotItemType.RPGPERSON || itemType == HotItemType.VIDEOGAMECOMPANY) {
+                continue;
+            }
+
             List<HotListItem> result = bggApi.getHotItems(itemType);
             assertNotNull("Null items returned for " + itemType.toString(), result);
             assertFalse("No items returned for " + itemType.toString(), result.isEmpty());
