@@ -50,6 +50,7 @@ public class UserInfo extends AbstractXmlMapping {
     private String battlenetAccount;
     private String steamAccount;
     private Float tradeRating;
+    private Float marketRating;
     private List<IdValue> buddies = new ArrayList<>();
     private List<IdValue> guilds = new ArrayList<>();
     @JacksonXmlProperty(localName = "top")
@@ -135,6 +136,11 @@ public class UserInfo extends AbstractXmlMapping {
         this.tradeRating = Float.parseFloat(tradeRating.getValue());
     }
 
+    @JsonSetter("marketrating")
+    public void setMarketRating(ThingName marketRating) {
+        this.marketRating = Float.parseFloat(marketRating.getValue());
+    }
+
     public void setBuddies(List<IdValue> buddies) {
         this.buddies = buddies;
     }
@@ -205,6 +211,10 @@ public class UserInfo extends AbstractXmlMapping {
 
     public Float getTradeRating() {
         return tradeRating;
+    }
+
+    public Float getMarketRating() {
+        return marketRating;
     }
 
     public List<IdValue> getBuddies() {
