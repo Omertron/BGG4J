@@ -90,6 +90,9 @@ public class BoardGame extends Thing {
     }
 
     public List<IdValue> getLink(LinkType linkType) {
+        if (boardGameLinks.get(linkType) == null) {
+            return new ArrayList<>();
+        }
         return boardGameLinks.get(linkType);
     }
 

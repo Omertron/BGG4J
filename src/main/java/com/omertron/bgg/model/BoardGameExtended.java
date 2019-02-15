@@ -46,7 +46,7 @@ public class BoardGameExtended extends BoardGame {
     private Integer minAge;
 
     @JacksonXmlProperty(localName = "videos")
-    private List<Video> videos = new ArrayList<>();
+    private VideoWrapper videoWrapper;
     @JacksonXmlProperty(localName = "versions")
     private List<BoardGame> versions = new ArrayList<>();
     @JacksonXmlProperty(localName = "comments")
@@ -149,11 +149,11 @@ public class BoardGameExtended extends BoardGame {
     }
 
     public List<Video> getVideos() {
-        return videos;
+        return videoWrapper.getVideos();
     }
 
-    public void setVideos(List<Video> videos) {
-        this.videos = videos;
+    public void setVideoWrapper(VideoWrapper videoWrapper) {
+        this.videoWrapper = videoWrapper;
     }
 
     public List<BoardGame> getVersions() {

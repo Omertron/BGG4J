@@ -76,8 +76,8 @@ public class BggApiTest {
         tv.addIgnore("top");
         USERNAMES.add(tv);
 
-        // DOW:TLN
-        GAME_IDS.add(new TestValue(193037));
+        GAME_IDS.add(new TestValue(193037));    // Dead of Winter
+        GAME_IDS.add(new TestValue(161886));    // 1879
 
         // Ticket To Ride
         FAMILY_IDS.add(new TestValue(17));
@@ -105,18 +105,22 @@ public class BggApiTest {
         LOG.info("getBoardGameInfo");
 
         for (TestValue test : GAME_IDS) {
-            LOG.info("{}", test.toString());
+            LOG.info("Testing: {}", test.toString());
             List<BoardGameExtended> result = bggApi.getBoardGameInfo(test.getId());
 
             for (BoardGameExtended bg : result) {
                 assertTrue("No max players", bg.getMaxPlayers() > 0);
-                assertFalse("No Alt Names", bg.getAlternativeNames().isEmpty());
-                assertFalse("No Artists", bg.getBoardGameArtist().isEmpty());
+
+                // Skip these for the "1879" game
+                if (test.getId() != 161886) {
+                    assertFalse("No Alt Names", bg.getAlternativeNames().isEmpty());
+                    assertFalse("No Artists", bg.getBoardGameArtist().isEmpty());
+                    assertFalse("No Expansions", bg.getBoardGameExpansion().isEmpty());
+                    assertFalse("No Integration", bg.getBoardGameIntegration().isEmpty());
+                }
                 assertFalse("No Categories", bg.getBoardGameCategory().isEmpty());
                 assertFalse("No Designers", bg.getBoardGameDesigner().isEmpty());
-                assertFalse("No Expansions", bg.getBoardGameExpansion().isEmpty());
                 assertFalse("No Family", bg.getBoardGameFamily().isEmpty());
-                assertFalse("No Integration", bg.getBoardGameIntegration().isEmpty());
                 assertFalse("No Mechanic", bg.getBoardGameMechanic().isEmpty());
                 assertFalse("No Publishers", bg.getBoardGamePublisher().isEmpty());
             }
