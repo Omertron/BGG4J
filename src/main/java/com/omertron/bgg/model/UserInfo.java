@@ -51,8 +51,11 @@ public class UserInfo extends AbstractXmlMapping {
     private String steamAccount;
     private Float tradeRating;
     private Float marketRating;
-    private List<IdValue> buddies = new ArrayList<>();
-    private List<IdValue> guilds = new ArrayList<>();
+
+    @JacksonXmlProperty(localName = "buddies")
+    private IdValueWrapper buddies;
+    @JacksonXmlProperty(localName = "guilds")
+    private IdValueWrapper guilds;
     @JacksonXmlProperty(localName = "top")
     private List<RankedList> topList = new ArrayList<>();
     @JacksonXmlProperty(localName = "hot")
@@ -141,14 +144,6 @@ public class UserInfo extends AbstractXmlMapping {
         this.marketRating = Float.parseFloat(marketRating.getValue());
     }
 
-    public void setBuddies(List<IdValue> buddies) {
-        this.buddies = buddies;
-    }
-
-    public void setGuilds(List<IdValue> guilds) {
-        this.guilds = guilds;
-    }
-
     public int getId() {
         return id;
     }
@@ -218,11 +213,11 @@ public class UserInfo extends AbstractXmlMapping {
     }
 
     public List<IdValue> getBuddies() {
-        return buddies;
+        return buddies.getValues();
     }
 
     public List<IdValue> getGuilds() {
-        return guilds;
+        return guilds.getValues();
     }
 
     public List<RankedList> getTopList() {

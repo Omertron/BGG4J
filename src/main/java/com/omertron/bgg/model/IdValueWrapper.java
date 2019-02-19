@@ -19,6 +19,7 @@
  */
 package com.omertron.bgg.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import java.util.ArrayList;
@@ -28,15 +29,14 @@ import java.util.List;
  *
  * @author Omertron
  */
-public class VideoWrapper extends AbstractXmlMapping {
+@JsonIgnoreProperties("page")
+public class IdValueWrapper {
 
     @JacksonXmlProperty(localName = "total", isAttribute = true)
     private int total;
-    private String value;
+    private final List<IdValue> values = new ArrayList<>();
 
-    private final List<Video> videos = new ArrayList<>();
-
-    protected VideoWrapper() {
+    protected IdValueWrapper() {
         // Default constructor
     }
 
@@ -48,17 +48,18 @@ public class VideoWrapper extends AbstractXmlMapping {
         this.total = total;
     }
 
-    public String getValue() {
-        return value;
+    @JsonSetter("guild")
+    public void setGuild(IdValue value) {
+        values.add(value);
     }
 
-    @JsonSetter("video")
-    public void setVideo(Video video) {
-        videos.add(video);
+    @JsonSetter("buddy")
+    public void setBuddy(IdValue value) {
+        values.add(value);
     }
 
-    public List<Video> getVideos() {
-        return videos;
+    public List<IdValue> getValues() {
+        return values;
     }
-    
+
 }
