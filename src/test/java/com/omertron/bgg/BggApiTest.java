@@ -67,13 +67,14 @@ public class BggApiTest {
         TestValue tv = new TestValue("omertron", 1170953);
         USERNAMES.add(tv);
         tv = new TestValue("chaddyboy_2000", 4994);
-        tv.addIgnore("MEMORY");
-        tv.addIgnore("hot");
+        tv.addIgnore(IgnoreEnum.MEMORY);
+        tv.addIgnore(IgnoreEnum.HOT);
         USERNAMES.add(tv);
 
         tv = new TestValue("Dlthorpe", 685930);
-        tv.addIgnore("hot");
-        tv.addIgnore("top");
+        tv.addIgnore(IgnoreEnum.HOT);
+        tv.addIgnore(IgnoreEnum.TOP);
+        tv.addIgnore(IgnoreEnum.GUILD);
         USERNAMES.add(tv);
 
         GAME_IDS.add(new TestValue(193037));    // Dead of Winter
@@ -163,13 +164,20 @@ public class BggApiTest {
             assertEquals("Wrong ID", result.getId(), test.getId().intValue());
             assertTrue("No avatar", StringUtils.isNotBlank(result.getAvatarLink()));
             assertFalse("No Buddies", result.getBuddies().isEmpty());
-            assertFalse("No Guilds", result.getGuilds().isEmpty());
-            if (test.containsIgnore("top")) {
+
+            if (test.containsIgnore(IgnoreEnum.GUILD)) {
+                assertTrue("Guilds found where non expected", result.getGuilds().isEmpty());
+            } else {
+                assertFalse("No Guilds", result.getGuilds().isEmpty());
+            }
+
+            if (test.containsIgnore(IgnoreEnum.TOP)) {
                 LOG.debug("Skipped TOP list for {}", test.getUsername());
             } else {
                 assertFalse("No Top list for " + test.getUsername(), result.getTopList().isEmpty());
             }
-            if (test.containsIgnore("hot")) {
+
+            if (test.containsIgnore(IgnoreEnum.HOT)) {
                 LOG.debug("Skipped HOT list for {}", test.getUsername());
             } else {
                 assertFalse("No Hot list for " + test.getUsername(), result.getHotList().isEmpty());
@@ -216,7 +224,7 @@ public class BggApiTest {
             includes.add(IncludeExclude.OWN);
             includes.add(IncludeExclude.COMMENT);
 
-            if (test.containsIgnore("MEMORY")) {
+            if (test.containsIgnore(IgnoreEnum.MEMORY)) {
                 LOG.info("Stats, Rated and version skipped due to memory issues");
             } else {
                 includes.add(IncludeExclude.STATS);

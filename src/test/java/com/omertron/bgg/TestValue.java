@@ -33,7 +33,7 @@ public class TestValue {
 
     private String username;
     private Integer id;
-    private final List<String> ignoreList = new ArrayList<>();
+    private final List<IgnoreEnum> ignoreList = new ArrayList<>();
 
     public TestValue() {
         this(null, null);
@@ -68,15 +68,15 @@ public class TestValue {
         this.id = id;
     }
 
-    public void addIgnore(String ignore) {
-        this.ignoreList.add(ignore.toUpperCase());
+    public void addIgnore(IgnoreEnum ignore) {
+        this.ignoreList.add(ignore);
     }
 
-    public boolean containsIgnore(String ignore) {
-        return this.ignoreList.contains(ignore.toUpperCase());
+    public boolean containsIgnore(IgnoreEnum ignore) {
+        return this.ignoreList.contains(ignore);
     }
 
-    public List<String> getIgnoreList() {
+    public List<IgnoreEnum> getIgnoreList() {
         return ignoreList;
     }
 
