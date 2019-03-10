@@ -34,6 +34,8 @@ import com.omertron.bgg.model.Family;
 import com.omertron.bgg.model.FamilyWrapper;
 import com.omertron.bgg.model.GenericListWrapper;
 import com.omertron.bgg.model.HotListItem;
+import com.omertron.bgg.model.Play;
+import com.omertron.bgg.model.PlayWrapper;
 import com.omertron.bgg.model.SearchWrapper;
 import com.omertron.bgg.model.UserInfo;
 import com.omertron.bgg.tools.HttpTools;
@@ -321,12 +323,28 @@ public class BggApi {
         }
     }
 
-    public void getPlays(String username, int bggId, Command type, String minDate, String maxDate, ThingType subtype, int page) throws BggException {
+    /**
+     * Get the plays for a given username
+     *
+     * @param username
+     * @param page
+     * @return
+     * @throws BggException
+     */
+    public List<Play> getPlays(String username, int page) throws BggException {
         URL url = new BggApiBuilder(BASE_URL)
                 .command(Command.PLAYS)
-                .buildUrl();
+                .username(username)
+                .page(page).buildUrl();
         LOG.debug(LOG_URL, url);
 
-        String webpage = httpTools.retrieveWebpage(url);
+        try {
+            String webpage = httpTools.retrieveWebpage(url);
+            PlayWrapper results = mapper.readValue(webpage, PlayWrapper.class);
+            return results.getPlays();
+        } catch (IOException ex) {
+            throw new BggException(ApiExceptionType.MAPPING_FAILED, "Failed to map Plays information", url, ex);
+        }
+
     }
 }
