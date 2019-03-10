@@ -100,12 +100,13 @@ public class BggApiTest {
     @Test
     public void testGetPlays() throws BggException {
         LOG.info("getPlays");
+        int page = 2;
 
         for (TestValue test : USERNAMES) {
             LOG.info("Testing: {}", test.toString());
-            List<Play> result = bggApi.getPlays(test.getUsername(), 0);
-            for (Play p : result) {
-            }
+            List<Play> result = bggApi.getPlays(test.getUsername(), page);
+            LOG.info("Plays counted for {} (Page {}): {}", test.getUsername(), page, result.size());
+            assertTrue("No logged plays", result.size() > 0);
         }
     }
 
@@ -114,7 +115,7 @@ public class BggApiTest {
      *
      * @throws BggException Custom exception containing failure code
      */
-    //@Test
+    @Test
     public void testGetBoardGameInfo() throws BggException {
         LOG.info("getBoardGameInfo");
 
@@ -146,7 +147,7 @@ public class BggApiTest {
      *
      * @throws BggException Custom exception containing failure code
      */
-    //@Test
+    @Test
     public void testGetFamilyItems() throws BggException {
         LOG.info("getFamilyItems");
 
@@ -166,7 +167,7 @@ public class BggApiTest {
      *
      * @throws BggException Custom exception containing failure code
      */
-    //@Test
+    @Test
     public void testGetUserInfo() throws BggException {
         LOG.info("getUserInfo");
 
@@ -198,7 +199,7 @@ public class BggApiTest {
         }
     }
 
-    //@Test
+    @Test
     public void testGetCollectionId() throws BggException {
         LOG.info("getCollectionInfo with ID");
 
@@ -225,7 +226,7 @@ public class BggApiTest {
      *
      * @throws BggException Custom exception containing failure code
      */
-    //@Test
+    @Test
     public void testGetCollectionInfo() throws BggException {
         LOG.info("getCollectionInfo");
 
@@ -259,7 +260,7 @@ public class BggApiTest {
      *
      * @throws BggException Custom exception containing failure code
      */
-    //@Test
+    @Test
     public void testGetCollectionInfoExpansions() throws BggException {
         LOG.info("getCollectionInfo - Expansions");
 
@@ -293,7 +294,7 @@ public class BggApiTest {
      *
      * @throws BggException Custom exception containing failure code
      */
-    //@Test
+    @Test
     public void testSearchBoardGame() throws BggException {
         LOG.info("searchBoardGame");
         String query = "Sushi Go";
@@ -309,7 +310,7 @@ public class BggApiTest {
      *
      * @throws BggException Custom exception containing failure code
      */
-    //@Test
+    @Test
     public void testGetHotItems() throws BggException {
         LOG.info("getHotItems");
 
