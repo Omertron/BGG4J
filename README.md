@@ -1,10 +1,10 @@
-Board Game Geek API for Java
-============================
+Slackbot
+========
 
-This is a java wrapper for the Board Game Geek XML API.
+This is a java bot for slack
 
-[![Build Status](http://jenkins.omertron.com/job/BGG4J/badge/icon)](http://jenkins.omertron.com/job/BGG4J)
+[![Build Status](https://travis-ci.com/Omertron/SlackBggBot.svg?branch=master)](https://travis-ci.com/Omertron/SlackBggBot)
 
 Project Documentation
 ---------------------
-The automatically generated documentation can be found [HERE](http://omertron.github.com/BGG4j/)
+The automatically generated documentation can be found [HERE](http://omertron.github.com/SlackBggBot/)
